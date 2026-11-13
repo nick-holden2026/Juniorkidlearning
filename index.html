@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Tech Explorer 🚀</title>
+<style>
+:root {
+  --purple:#6757d9;
+  --pink:#ff8eb5;
+  --yellow:#ffdb76;
+  --ink:#302b53;
+  --bg:#f5f1ff;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;background:linear-gradient(135deg,#f5f1ff,#fff7ed);
+ color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;
+}
+button{border:0;cursor:pointer;font:inherit}
+header{
+ max-width:1100px;margin:auto;padding:20px;
+ display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.brand{font-size:22px;font-weight:1000}
+.brand span{font-size:35px}
+.btn{
+ background:white;color:var(--purple);padding:12px 17px;
+ border-radius:16px;font-weight:bold;box-shadow:0 5px 15px #3331;
+}
+main{max-width:1100px;margin:auto;padding:10px 20px 50px}
+.hero{
+ background:linear-gradient(120deg,#6757d9,#a17bf2,#f38db9);
+ color:white;border-radius:30px;padding:30px;
+ display:flex;justify-content:space-between;align-items:center;
+ box-shadow:0 12px 30px #39307822;
+}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:10px 0}
+.hero p{font-size:18px;line-height:1.5}
+.hero-art{font-size:95px}
+.start{
+ background:var(--yellow);padding:14px 22px;
+ border-radius:15px;font-weight:1000;color:#443300;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.stat{
+ background:white;border-radius:20px;padding:17px;
+ box-shadow:0 5px 20px #3331;font-size:14px;
+}
+.stat strong{display:block;font-size:25px}
+.progress{height:12px;background:#e5dff8;border-radius:20px;overflow:hidden}
+#progressFill{height:100%;background:#65d7b2;width:0%;transition:.4s}
+h2{font-size:23px}
+.layout{display:grid;grid-template-columns:1fr 1.15fr;gap:18px;margin-top:20px}
+.panel{background:white;padding:20px;border-radius:24px;box-shadow:0 5px 20px #3331}
+#lessonList{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.lesson{
+ text-align:left;padding:12px;border-radius:15px;
+ background:#f5f2ff;color:var(--ink);font-weight:bold;
+ border:2px solid transparent;min-height:75px;
+}
+.lesson.active{border-color:var(--purple);background:#ece8ff}
+.lesson small{display:block;color:#777;margin-top:5px}
+.scene{
+ height:210px;border-radius:22px;
+ background:linear-gradient(135deg,#dff6ff,#f0eaff);
+ display:grid;place-items:center;margin:15px 0;
+ position:relative;overflow:hidden;
+}
+#picture{font-size:100px;animation:float 3s infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(4deg)}}
+.teacher{
+ display:flex;gap:10px;align-items:flex-start;
+ background:#fff5df;padding:15px;border-radius:18px;
+ line-height:1.5;
+}
+.teacher-icon{font-size:34px}
+.teacher p{margin:5px 0}
+.word{text-align:center;font-size:25px;color:var(--purple);font-weight:1000;margin:17px}
+.word small{display:block;font-size:15px;color:#777}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px}
+.quiz{background:#f4f1ff;padding:15px;border-radius:18px}
+.options{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.option{
+ background:white;border:2px solid #e4dfff;
+ border-radius:15px;padding:12px 5px;font-weight:bold;color:var(--ink);
+}
+.option span{display:block;font-size:35px;margin-bottom:5px}
+.option:disabled{opacity:.7}
+.feedback{text-align:center;font-weight:bold;min-height:28px;margin-top:10px}
+.nav{display:flex;justify-content:space-between;gap:8px;margin-top:15px;flex-wrap:wrap}
+.badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{background:#fff2c9;padding:12px;border-radius:15px;font-weight:bold}
+.parent{margin-top:20px;background:#302b53;color:white;padding:20px;border-radius:20px}
+.parent p{line-height:1.6}
+footer{text-align:center;padding:25px;color:#777}
+@media(max-width:750px){
+ .layout{grid-template-columns:1fr}
+ .hero-art{display:none}
+ .stats{grid-template-columns:1fr}
+}
+@media(max-width:450px){
+ #lessonList{grid-template-columns:1fr}
+ .options{grid-template-columns:1fr}
+ main{padding:10px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="brand">🚀 Little Tech Explorer</div>
+ <button class="btn" id="sound">🔊 Sound ON</button>
+</header>
+
+<main>
+
+<section class="hero">
+ <div>
+  <b>WELCOME, LITTLE EXPLORER!</b>
+  <h1>Let's make friends<br>with computers! 💜</h1>
+  <p>Namaste! Aaj hum khelenge aur nayi cheezein seekhenge!</p>
+  <button class="start" onclick="showLesson(0)">Start Learning ⭐</button>
+ </div>
+ <div class="hero-art">👩🏻‍🏫🤖💻</div>
+</section>
+
+<section class="stats">
+ <div class="stat">⭐ My Stars<strong id="stars">0</strong></div>
+ <div class="stat">📚 Lessons Completed<strong id="completed">0 / 20</strong></div>
+ <div class="stat">🏅 My Badges<strong id="badgesCount">0</strong></div>
+</section>
+
+<h2>🗺️ My Learning Adventure</h2>
+<div class="progress"><div id="progressFill"></div></div>
+<p id="percentage">0% complete</p>
+
+<div class="layout">
+
+<section class="panel">
+ <h2>📚 Choose a Lesson</h2>
+ <div id="lessonList"></div>
+</section>
+
+<section class="panel" id="learning">
+ <b id="lessonNumber">LESSON 01</b>
+ <h2 id="title">What is a computer?</h2>
+
+ <div class="scene">
+  <div id="picture">💻</div>
+ </div>
+
+ <div class="teacher">
+  <div class="teacher-icon">👩🏻‍🏫</div>
+  <div>
+   <b>Teacher Tara says:</b>
+   <p id="hindi">Namaste! Yeh computer hai.</p>
+   <p id="english">This is a computer.</p>
+   <button class="btn" onclick="listen()">🔊 Listen Again</button>
+  </div>
+  <div class="teacher-icon">🤖</div>
+ </div>
+
+ <div class="word" id="word">
+  COMPUTER
+  <small>कंप्यूटर</small>
+ </div>
+
+ <div class="actions">
+  <button class="btn" onclick="miniVideo()">▶️ Play Mini Video</button>
+  <button class="btn" onclick="sayWord()">🗣️ Say the Word</button>
+ </div>
+
+ <div class="quiz">
+  <h3 id="question">Which picture shows a computer?</h3>
+  <div class="options" id="options"></div>
+  <div class="feedback" id="feedback"></div>
+ </div>
+
+ <div class="nav">
+  <button class="btn" onclick="previous()">← Previous</button>
+  <button class="start" onclick="completeLesson()">I did it! ⭐</button>
+  <button class="btn" onclick="next()">Next →</button>
+ </div>
+</section>
+</div>
+
+<section class="panel" style="margin-top:20px">
+ <h2>🎁 My Special Rewards</h2>
+ <div class="badges" id="rewardList">
+  <span class="badge">🌱 Your first star is waiting!</span>
+ </div>
+</section>
+
+<details class="parent">
+ <summary>🔐 Parent Corner – Grown-ups Only</summary>
+ <p>Learning progress is stored in this browser on this device. No account is required.</p>
+ <p>Learning tip: After every lesson, show your child the real computer part and encourage her to say its English name.</p>
+ <p>Please supervise computer use, take regular breaks and practise with real computer equipment.</p>
+ <button class="btn" onclick="resetProgress()">Reset Progress</button>
+ <button class="btn" onclick="downloadProgress()">Download Progress</button>
+</details>
+
+</main>
+
+<footer>Made with ❤️ for curious little minds · Stage 1</footer>
+
+<script>
+const lessons = [
+{
+ title:"What is a computer?",emoji:"💻",word:"COMPUTER",
+ pron:"kuhm-PYOO-ter",
+ hi:"Namaste! Yeh computer hai. Computer ek machine hai jo humein kaam karne aur seekhne mein madad karta hai.",
+ en:"This is a computer. A computer helps us learn and do many things.",
+ q:"Which picture shows a computer?",
+ options:[["💻","Computer"],["🪑","Chair"],["🍎","Apple"]],correct:0
+},
+{
+ title:"Laptop or desktop?",emoji:"🖥️",word:"LAPTOP",
+ pron:"LAP-top",
+ hi:"Yeh laptop hai. Laptop ko hum fold karke kahin bhi le ja sakte hain. Desktop ek jagah par rehta hai.",
+ en:"A laptop can fold and travel with us. A desktop usually stays on a desk.",
+ q:"Which one can fold shut?",
+ options:[["💻","Laptop"],["🖥️","Desktop"],["📺","TV"]],correct:0
+},
+{
+ title:"Meet the screen",emoji:"🖥️",word:"SCREEN",
+ pron:"SKREEN",
+ hi:"Yeh screen hai. Hum screen par pictures, videos aur words dekhte hain.",
+ en:"This is the screen. We see pictures, videos and words on it.",
+ q:"Where do we see pictures?",
+ options:[["🖥️","Screen"],["🖱️","Mouse"],["🎧","Headphones"]],correct:0
+},
+{
+ title:"Meet the keyboard",emoji:"⌨️",word:"KEYBOARD",
+ pron:"KEE-board",
+ hi:"Yeh keyboard hai. Iske buttons ko keys kehte hain. Hum keys dabakar letters likhte hain.",
+ en:"This is a keyboard. We press its keys to type letters and numbers.",
+ q:"Which one has many keys?",
+ options:[["⌨️","Keyboard"],["⚽","Ball"],["🥄","Spoon"]],correct:0
+},
+{
+ title:"Meet the mouse",emoji:"🖱️",word:"MOUSE",
+ pron:"MOWSS",
+ hi:"Yeh computer mouse hai. Isse hum screen par pointer ko move karte hain.",
+ en:"This is a computer mouse. It helps us move the pointer on the screen.",
+ q:"What helps us move the pointer?",
+ options:[["🖱️","Mouse"],["🖨️","Printer"],["📚","Book"]],correct:0
+},
+{
+ title:"What is a CPU?",emoji:"🗄️",word:"CPU",
+ pron:"SEE-PEE-YOO",
+ hi:"CPU computer ka important hissa hai. Ise computer ka brain bhi kaha jata hai.",
+ en:"The CPU is an important part that processes instructions.",
+ q:"Which part processes instructions?",
+ options:[["🗄️","CPU"],["🎤","Microphone"],["🧸","Teddy"]],correct:0
+},
+{
+ title:"Let's hear speakers",emoji:"🔊",word:"SPEAKERS",
+ pron:"SPEE-kurz",
+ hi:"Speakers se awaaz bahar aati hai. Hum music aur computer ki sound sun sakte hain.",
+ en:"Speakers play sound so we can hear music and voices.",
+ q:"Which one plays sound?",
+ options:[["🔊","Speakers"],["🖨️","Printer"],["⌨️","Keyboard"]],correct:0
+},
+{
+ title:"Headphones",emoji:"🎧",word:"HEADPHONES",
+ pron:"HED-fohnz",
+ hi:"Headphones hum kaanon par pehente hain. Isse hum awaaz sunte hain.",
+ en:"We wear headphones on our ears to listen to sound.",
+ q:"What do we wear to listen privately?",
+ options:[["🎧","Headphones"],["🖱️","Mouse"],["🖥️","Screen"]],correct:0
+},
+{
+ title:"Meet the printer",emoji:"🖨️",word:"PRINTER",
+ pron:"PRIN-ter",
+ hi:"Printer computer ki picture ya words ko paper par print karta hai.",
+ en:"A printer puts pictures and words onto paper.",
+ q:"Which machine prints on paper?",
+ options:[["🖨️","Printer"],["🎧","Headphones"],["🖱️","Mouse"]],correct:0
+},
+{
+ title:"Computer parts",emoji:"🧩",word:"PARTS",
+ pron:"PARTS",
+ hi:"Computer ke alag-alag parts milkar kaam karte hain: screen, keyboard aur mouse.",
+ en:"Different computer parts work together.",
+ q:"Which is a computer part?",
+ options:[["⌨️","Keyboard"],["🍌","Banana"],["🧦","Sock"]],correct:0
+},
+{
+ title:"What can computers do?",emoji:"🎨",word:"CREATE",
+ pron:"kree-AYT",
+ hi:"Computer par hum draw kar sakte hain, stories bana sakte hain aur naye things seekh sakte hain.",
+ en:"We can draw, make stories, learn and create with computers.",
+ q:"What can we do on a computer?",
+ options:[["🎨","Draw"],["🛁","Take a bath"],["🛏️","Sleep"]],correct:0
+},
+{
+ title:"Computer or television?",emoji:"📺",word:"TELEVISION",
+ pron:"TEL-uh-vizh-un",
+ hi:"Television par hum shows dekhte hain. Computer par hum kaam aur games bhi kar sakte hain.",
+ en:"A television is mainly for watching. A computer can help us create and work too.",
+ q:"Which one can help us type a story?",
+ options:[["💻","Computer"],["📺","Television"],["🧸","Toy"]],correct:0
+},
+{
+ title:"Computer or mobile?",emoji:"📱",word:"MOBILE",
+ pron:"MOH-byle",
+ hi:"Mobile ek chhota phone hai. Computer ki screen aur keyboard aksar bade hote hain.",
+ en:"A mobile is a small handheld device.",
+ q:"Which one do we usually hold in one hand?",
+ options:[["📱","Mobile"],["🖥️","Desktop"],["🖨️","Printer"]],correct:0
+},
+{
+ title:"Electricity helps",emoji:"⚡",word:"ELECTRICITY",
+ pron:"ee-lek-TRIS-uh-tee",
+ hi:"Computer ko chalne ke liye electricity ya charged battery chahiye. Wires ko kabhi nahi kheenchna.",
+ en:"A computer needs electricity or a charged battery. Never pull its wires.",
+ q:"What helps a plugged-in computer get power?",
+ options:[["⚡","Electricity"],["💧","Water"],["🍪","Cookie"]],correct:0
+},
+{
+ title:"What is a button?",emoji:"🔘",word:"BUTTON",
+ pron:"BUT-un",
+ hi:"Button ko press karte hain. Computer par keyboard aur mouse mein bhi buttons hote hain.",
+ en:"A button is something we press to make something happen.",
+ q:"What can you press?",
+ options:[["🔘","Button"],["☁️","Cloud"],["🌳","Tree"]],correct:0
+},
+{
+ title:"What is clicking?",emoji:"👆",word:"CLICK",
+ pron:"KLIK",
+ hi:"Mouse ka button ek baar dabana click kehlata hai. Pehle grown-up ke saath practice karo.",
+ en:"Pressing a mouse button once is called a click.",
+ q:"What do we call one mouse press?",
+ options:[["👆","Click"],["🏃","Run"],["😴","Sleep"]],correct:0
+},
+{
+ title:"What is typing?",emoji:"⌨️",word:"TYPING",
+ pron:"TY-ping",
+ hi:"Keyboard par keys dabakar letters aur words likhna typing kehlata hai.",
+ en:"Typing means using keyboard keys to write letters and words.",
+ q:"What do we use to type?",
+ options:[["⌨️","Keyboard"],["🖨️","Printer"],["🔊","Speaker"]],correct:0
+},
+{
+ title:"Computer words",emoji:"🔤",word:"WORDS",
+ pron:"WERDZ",
+ hi:"Aaj humne computer, screen, keyboard aur mouse jaise English words seekhe!",
+ en:"We learned English words: computer, screen, keyboard and mouse!",
+ q:"Which word names this? 🖱️",
+ options:[["🐭","Mouse"],["🍎","Apple"],["🪑","Chair"]],correct:0
+},
+{
+ title:"Revision time!",emoji:"🧠",word:"REMEMBER",
+ pron:"ree-MEM-ber",
+ hi:"Wah! Chalo yaad karein. Computer ke parts ko pehchano aur unke naam bolo.",
+ en:"Wonderful! Let's remember the computer parts and say their names.",
+ q:"Which one is NOT a computer part?",
+ options:[["🍌","Banana"],["⌨️","Keyboard"],["🖱️","Mouse"]],correct:0
+},
+{
+ title:"My first computer star!",emoji:"🏆",word:"EXPLORER",
+ pron:"ik-SPLOR-er",
+ hi:"Shabash! Tumne apna pehla computer course poora kar liya. Keep learning and exploring!",
+ en:"Amazing work! You finished your first computer course. Keep learning and exploring!",
+ q:"Are you ready for your next adventure?",
+ options:[["🚀","Yes!"],["⭐","Yes!"],["💜","Yes!"]],correct:0
+}
+];
+
+let current=0;
+let soundOn=true;
+let progress;
+
+try{
+ progress=JSON.parse(localStorage.getItem("lteProgress"))||
+ {completed:[],stars:0};
+}catch(e){
+ progress={completed:[],stars:0};
+}
+
+const $=id=>document.getElementById(id);
+
+function save(){
+ localStorage.setItem("lteProgress",JSON.stringify(progress));
+ updateStats();
+ renderList();
+ renderBadges();
+}
+
+function updateStats(){
+ let n=progress.completed.length;
+ $("stars").textContent=progress.stars;
+ $("completed").textContent=n+" / 20";
+ $("badgesCount").textContent=Math.floor(n/5);
+ $("progressFill").style.width=(n/20*100)+"%";
+ $("percentage").textContent=Math.round(n/20*100)+"% complete";
+}
+
+function renderList(){
+ $("lessonList").innerHTML=lessons.map((l,i)=>`
+ <button class="lesson ${i===current?'active':''}" onclick="showLesson(${i})">
+ ${l.emoji} ${i+1}. ${l.title}
+ <small>${progress.completed.includes(i)?"Completed ✓":"Tap to learn"}</small>
+ </button>`).join("");
+}
+
+function renderBadges(){
+ let n=progress.completed.length;
+ let rewards=[];
+ if(n>=1)rewards.push("🌟 First lesson star");
+ if(n>=5)rewards.push("🖐️ Five-lesson explorer");
+ if(n>=10)rewards.push("🏅 Computer parts pro");
+ if(n>=15)rewards.push("🚀 Super learner");
+ if(n>=20)rewards.push("🏆 Stage 1 graduate");
+ $("rewardList").innerHTML=rewards.length?
+ rewards.map(x=>`<span class="badge">${x}</span>`).join("") :
+ '<span class="badge">🌱 Your first star is waiting!</span>';
+}
+
+function speak(text,lang="hi-IN"){
+ if(!soundOn || !("speechSynthesis" in window))return;
+ speechSynthesis.cancel();
+ let voice=new SpeechSynthesisUtterance(text);
+ voice.lang=lang;
+ voice.rate=.82;
+ voice.pitch=1.08;
+ let voices=speechSynthesis.getVoices();
+ let selected=voices.find(v=>v.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase()));
+ if(selected)voice.voice=selected;
+ speechSynthesis.speak(voice);
+}
+
+function showLesson(i){
+ current=Math.max(0,Math.min(19,i));
+ let l=lessons[current];
+
+ $("lessonNumber").textContent="LESSON "+String(current+1).padStart(2,"0");
+ $("title").textContent=l.title;
+ $("picture").textContent=l.emoji;
+ $("hindi").textContent=l.hi;
+ $("english").textContent=l.en;
+ $("word").innerHTML=l.word+"<small>हिंदी में · "+l.pron+"</small>";
+ $("question").textContent=l.q;
+ $("feedback").textContent="";
+
+ $("options").innerHTML=l.options.map((o,j)=>`
+ <button class="option" onclick="answer(${j})">
+ <span>${o[0]}</span>${o[1]}
+ </button>`).join("");
+
+ renderList();
+ $("learning").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+function answer(j){
+ let l=lessons[current];
+ document.querySelectorAll(".option").forEach((b,k)=>{
+ b.disabled=true;
+ if(k===j)b.style.borderColor="#6757d9";
+ });
+ if(j===l.correct){
+  $("feedback").textContent="🎉 Shabash! Wonderful!";
+  speak("Shabash! Very good!","hi-IN");
+ }else{
+  $("feedback").textContent="💜 Good try! Let's learn together.";
+  speak("Good try. Chalo phir se seekhte hain.","hi-IN");
+ }
+}
+
+function completeLesson(){
+ if(!progress.completed.includes(current)){
+  progress.completed.push(current);
+  progress.stars++;
+  save();
+  $("feedback").textContent="⭐ You earned a star! Shabash!";
+  speak("You earned a star! Shabash!","hi-IN");
+ }else{
+  $("feedback").textContent="You already earned this star! ⭐";
+ }
+}
+
+function listen(){
+ let l=lessons[current];
+ speak(l.hi,"hi-IN");
+ setTimeout(()=>speak(l.en,"en-IN"),Math.max(3500,l.hi.length*75));
+}
+
+function sayWord(){
+ speak(lessons[current].word.toLowerCase(),"en-IN");
+}
+
+function miniVideo(){
+ let p=$("picture");
+ p.animate(
+  [{transform:"scale(.7) rotate(-8deg)"},
+   {transform:"scale(1.2) rotate(8deg)"},
+   {transform:"scale(1) rotate(0)"}],
+  {duration:1300,iterations:2}
+ );
+ speak("Dekho! "+lessons[current].hi,"hi-IN");
+}
+
+function next(){
+ if(current<19)showLesson(current+1);
+}
+
+function previous(){
+ if(current>0)showLesson(current-1);
+}
+
+function resetProgress(){
+ if(confirm("Parent: Reset all learning progress?")){
+  progress={completed:[],stars:0};
+  save();
+  showLesson(0);
+ }
+}
+
+function downloadProgress(){
+ let blob=new Blob([JSON.stringify(progress,null,2)],{type:"application/json"});
+ let a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="little-tech-explorer-progress.json";
+ a.click();
+ URL.revokeObjectURL(a.href);
+}
+
+$("sound").onclick=()=>{
+ soundOn=!soundOn;
+ $("sound").textContent=soundOn?"🔊 Sound ON":"🔇 Sound OFF";
+ if(!soundOn)speechSynthesis.cancel();
+};
+
+updateStats();
+renderList();
+renderBadges();
+showLesson(0);
+</script>
+</body>
+</html>
