@@ -49,6 +49,7 @@ h2{font-size:23px}
 .option span{display:block;font-size:35px;margin-bottom:5px}
 .option:disabled{opacity:.5}
 .option.good{border-color:#3dbf94;background:#e5fbf3;opacity:1}
+.tip{background:#eafaf3;border-radius:14px;padding:12px;margin-top:12px;line-height:1.5}
 .feedback{text-align:center;font-weight:bold;min-height:28px;margin-top:10px}
 .track{display:flex;justify-content:center;gap:12px;font-size:26px;margin-bottom:6px}
 .nav{display:flex;justify-content:space-between;gap:8px;margin-top:15px;flex-wrap:wrap}
@@ -73,7 +74,7 @@ footer{text-align:center;padding:25px;color:#777}
 <section class="hero">
  <div>
   <b>WELCOME, LITTLE EXPLORER!</b>
-  <h1>Let's make friends<br>with computers! 💜</h1>
+  <h1>Let's learn, play<br>and grow! 💜</h1>
   <p>Namaste! Aaj hum khelenge aur nayi cheezein seekhenge!</p>
   <button class="start" onclick="startLearning()">Start Learning ⭐</button>
  </div>
@@ -93,6 +94,7 @@ footer{text-align:center;padding:25px;color:#777}
 <div class="layout">
 <section class="panel">
  <h2>📚 Choose a Lesson</h2>
+ <div class="tabs" id="subs"></div>
  <div class="tabs" id="tabs"></div>
  <div id="lessonList"></div>
 </section>
@@ -113,6 +115,8 @@ footer{text-align:center;padding:25px;color:#777}
   </div>
   <div class="teacher-icon" aria-hidden="true">🤖</div>
  </div>
+
+ <div class="tip" id="tip" style="display:none"></div>
 
  <div class="word" id="word"></div>
 
@@ -147,6 +151,7 @@ footer{text-align:center;padding:25px;color:#777}
  <p>Learning tip: After every lesson, show your child the real computer part and encourage her to say its English name.</p>
  <p>How stages unlock: each stage ends with a Boss Quiz. Four right answers out of five opens the next stage. The quiz shuffles its answers and can be retried.</p>
  <p>About Stages 3 to 5: they teach the ideas (patterns, learning from examples, predicting the next word) through short lessons and quizzes. For hands-on practice later, try Scratch, then Google's <a href="https://teachablemachine.withgoogle.com" target="_blank" rel="noopener">Teachable Machine</a>, then Python.</p>
+ <p>Subjects: Computers, English, Math, GK and Life Skills. Each subject has stages that unlock one after another. Life Skills lessons end with a grown-up idea: friendships and confidence grow most with real playmates and with you listening, so use the tool for 15 to 20 minutes with her and then try the idea offline.</p>
  <p>Please supervise computer use, take regular breaks and practise with real computer equipment.</p>
  <button class="btn" onclick="resetProgress()">Reset Progress</button>
  <button class="btn" onclick="downloadProgress()">Download Progress</button>
@@ -156,9 +161,9 @@ footer{text-align:center;padding:25px;color:#777}
 
 <script>
 // each lesson: [title, emoji, WORD, hindi word, pronunciation, hinglish, english, question, options]. First option is the correct one (shuffled when shown).
-const mk=a=>({title:a[0],emoji:a[1],word:a[2],hw:a[3],pron:a[4],hi:a[5],en:a[6],q:a[7],options:a[8]});
+const mk=a=>({title:a[0],emoji:a[1],word:a[2],hw:a[3],pron:a[4],hi:a[5],en:a[6],q:a[7],options:a[8],p:a[9]});
 const STAGES=[
-{t:"Meet the Computer",e:"💻",L:[
+{sub:0,t:"Meet the Computer",e:"💻",L:[
 ["What is a computer?","💻","COMPUTER","कंप्यूटर","kuhm-PYOO-ter","Namaste! Yeh computer hai. Computer ek machine hai jo humein kaam karne aur seekhne mein madad karta hai.","This is a computer. A computer helps us learn and do many things.","Which picture shows a computer?",[["💻","Computer"],["🪑","Chair"],["🍎","Apple"]]],
 ["Laptop or desktop?","🖥️","LAPTOP","लैपटॉप","LAP-top","Yeh laptop hai. Laptop ko hum fold karke kahin bhi le ja sakte hain. Desktop ek jagah par rehta hai.","A laptop can fold and travel with us. A desktop usually stays on a desk.","Which one can fold shut?",[["💻","Laptop"],["🖥️","Desktop"],["📺","TV"]]],
 ["Meet the screen","🖥️","SCREEN","स्क्रीन","SKREEN","Yeh screen hai. Hum screen par pictures, videos aur words dekhte hain.","This is the screen. We see pictures, videos and words on it.","Where do we see pictures?",[["🖥️","Screen"],["🖱️","Mouse"],["🎧","Headphones"]]],
@@ -186,7 +191,7 @@ const STAGES=[
 ["Computer ko kya chahiye? What does a computer need?","⚡ Electricity","🍪 Cookie","🌳 Tree"],
 ["Mouse ek baar dabana? One mouse press is a...","👆 Click","🏃 Run","😴 Sleep"]]},
 
-{t:"Steps and Loops",e:"🤖",L:[
+{sub:0,t:"Steps and Loops",e:"🤖",L:[
 ["Steps in order","🪜","STEPS","कदम","STEPS","Kaam steps mein hota hai. Pehle paste lagao, phir brush karo, phir kulla karo. Order bahut zaroori hai!","We do things in steps, one after another. The order matters!","Which step comes FIRST when brushing teeth?",[["🧴","Paste on brush"],["😁","Smile"],["🚿","Rinse"]]],
 ["What is a program?","📜","PROGRAM","प्रोग्राम","PRO-gram","Program computer ko diye gaye steps ki list hai. Computer wahi karta hai jo hum likhte hain.","A program is a list of steps for the computer. It does exactly what we write.","A program is a list of...",[["📜","Steps"],["🍌","Fruit"],["🧦","Socks"]]],
 ["Robot commands","🤖","FORWARD","आगे","FOR-werd","Robot ko hum F se aage, L se left aur R se right bhejte hain.","F moves forward, L turns left, R turns right.","Which command moves the robot forward?",[["⬆️","F"],["↩️","L"],["↪️","R"]]],
@@ -201,7 +206,7 @@ const STAGES=[
 ["Agar baarish ho to? If it rains?","Take an umbrella","Wear sunglasses","Go swimming"],
 ["Brush karne ka pehla step? First step?","Paste on brush","Smile","Rinse"]]},
 
-{t:"Data and Patterns",e:"📊",L:[
+{sub:0,t:"Data and Patterns",e:"📊",L:[
 ["What is data?","🗃️","DATA","डेटा","DAY-tuh","Data matlab jaankari jo hum ikattha karte hain, jaise kitne aam aur kitne seb.","Data is information we collect, like how many mangoes and apples.","Which one is data?",[["📋","A list of counts"],["🎈","A balloon"],["🧸","A teddy"]]],
 ["Reading a chart","📊","CHART","चार्ट","CHART","Chart mein bada bar matlab zyada. Chhota bar matlab kam.","In a bar chart, a tall bar means more and a short bar means less.","What does the tallest bar show?",[["📊","The biggest number"],["🔻","The smallest number"],["❓","Nothing"]]],
 ["Patterns","🔴","PATTERN","पैटर्न","PAT-ern","Pattern woh cheez hai jo baar-baar aati hai. Laal, neela, laal, neela... agla kya?","A pattern repeats. Red, blue, red, blue... what is next?","🔴🔵🔴🔵 ... what comes next?",[["🔴","Red"],["🔵","Blue"],["🟡","Yellow"]]],
@@ -215,7 +220,7 @@ const STAGES=[
 ["2, 4, 6, 8 ... agla kya? Next?","10","9","7"],
 ["Zyada examples se andaza? More examples make guesses...","Better","Worse","The same"]]},
 
-{t:"How Machines Learn",e:"🧠",L:[
+{sub:0,t:"How Machines Learn",e:"🧠",L:[
 ["What is a model?","🧠","MODEL","मॉडल","MOD-ul","Model ek chhota computer dimaag hai jo examples se seekhta hai.","A model is a small computer brain that learns from examples.","A model learns from...",[["📚","Examples"],["🍕","Pizza"],["🧦","Socks"]]],
 ["Training","🏋️","TRAIN","सिखाना","TRAYN","Model ko hum bahut saari tasveerein dikhakar sikhate hain. Ise training kehte hain.","We show a model many examples. This is called training.","Showing a model many examples is called...",[["🏋️","Training"],["🛌","Sleeping"],["🍽️","Eating"]]],
 ["One kind only","🐱","BIAS","पक्षपात","BY-us","Agar hum sirf ek tarah ki billi dikhayein, to model baaki billiyan nahi pehchanega.","If we show only one kind of cat, the model fails on other cats.","Trained on one kind of cat only. What happens?",[["❌","It fails on other cats"],["✅","It knows all cats"],["🐶","It becomes a dog"]]],
@@ -229,7 +234,7 @@ const STAGES=[
 ["Weight kya hai? A weight is...","A number it adjusts","A kitchen scale","A picture"],
 ["Bahut examples dikhana? Showing many examples is...","Training","Sleeping","Eating"]]},
 
-{t:"Build a Tiny LLM",e:"✍️",L:[
+{sub:0,t:"Build a Tiny LLM",e:"✍️",L:[
 ["Tokens","🧩","TOKEN","टोकन","TOH-kun","Computer sentence ko chhote tukdon mein todta hai. In tukdon ko token kehte hain.","A computer breaks text into small pieces called tokens.","A token is a...",[["🧩","Piece of text"],["🪙","Bus coin"],["🍪","Cookie"]]],
 ["Next token","➡️","NEXT TOKEN","अगला टोकन","NEKST TOH-kun","LLM har baar agla token chunta hai, phir uske baad agla. Aise poora jawab banta hai.","An LLM picks the next token, then the next, until the answer is done.","What does an LLM mostly do?",[["➡️","Predict the next token"],["🔮","See the future"],["🍳","Cook food"]]],
 ["What is an LLM?","🤖","LLM","एल एल एम","EL-EL-EM","LLM matlab Large Language Model. Ye bahut saare text se pattern seekhta hai.","LLM means Large Language Model. It learns patterns from a lot of text.","An LLM learns patterns from...",[["📚","Lots of text"],["🧦","Socks"],["🌧️","Rain"]]],
@@ -241,12 +246,97 @@ const STAGES=[
 ["Token kya hai? A token is a...","Piece of text","Bus coin","Cookie"],
 ["LLM galat kyun bol sakta hai? Why false things?","It predicts likely words","It lies on purpose","It always checks facts"],
 ["Accha text dene se? Better text gives...","Better predictions","Worse predictions","No change"],
-["Pehla kadam? A good first step?","Small model, small text","Giant computer only","Ask it to build itself"]]}
+["Pehla kadam? A good first step?","Small model, small text","Giant computer only","Ask it to build itself"]]},
+{sub:1,t:"Letters and Sounds",e:"🔤",L:[
+["A, B, C","🍎","A B C","ए बी सी","AY BEE SEE","A se Apple, B se Ball, C se Cat. Har letter ki ek awaaz hoti hai.","A is for Apple. B is for Ball. C is for Cat. Every letter has a sound.","Which one starts with B?",[["⚽","Ball"],["🌳","Tree"],["🐶","Dog"]],"Point to letters on signs and packets today and say their sounds."],
+["D, E, F","🐶","D E F","डी ई एफ","DEE EE EF","D se Dog, E se Egg, F se Fish. Awaaz sunkar letter pehchano.","D is for Dog. E is for Egg. F is for Fish.","Which one starts with E?",[["🥚","Egg"],["☀️","Sun"],["🐱","Cat"]]],
+["G, H, I","🎩","G H I","जी एच आई","JEE AYCH EYE","G se Goat, H se Hat, I se Ice cream.","G is for Goat. H is for Hat. I is for Ice cream.","Which one starts with H?",[["🎩","Hat"],["🚌","Bus"],["🖊️","Pen"]]],
+["J, K, L","🪁","J K L","जे के एल","JAY KAY EL","J se Juice, K se Kite, L se Lion.","J is for Juice. K is for Kite. L is for Lion.","Which one starts with K?",[["🪁","Kite"],["⚽","Ball"],["🍎","Apple"]]],
+["M, N, O","🥭","M N O","एम एन ओ","EM EN OH","M se Mango, N se Nest, O se Orange.","M is for Mango. N is for Nest. O is for Orange.","Which one starts with M?",[["🥭","Mango"],["🐶","Dog"],["☀️","Sun"]]],
+["P, Q, R","🌧️","P Q R","पी क्यू आर","PEE KYOO AR","P se Pen, Q se Queen, R se Rain.","P is for Pen. Q is for Queen. R is for Rain.","Which one starts with R?",[["🌧️","Rain"],["🐱","Cat"],["⚽","Ball"]]],
+["S, T, U","☀️","S T U","एस टी यू","ES TEE YOO","S se Sun, T se Tree, U se Umbrella.","S is for Sun. T is for Tree. U is for Umbrella.","Which one starts with S?",[["☀️","Sun"],["🎩","Hat"],["🥚","Egg"]]],
+["V, W, X, Y, Z","🦓","V W X Y Z","वी डब्ल्यू एक्स वाई ज़ेड","VEE DUB-ul-yoo EKS WYE ZED","V se Van, W se Watch, X se X-ray, Y se Yo-yo, Z se Zebra.","V is for Van. W is for Watch. X is for X-ray. Y is for Yo-yo. Z is for Zebra.","Which one starts with Z?",[["🦓","Zebra"],["🌳","Tree"],["🐱","Cat"]]]
+],X:[
+["Kaun B se shuru hota hai? Starts with B?","⚽ Ball","🌳 Tree","🐶 Dog"],
+["Kaun S se shuru hota hai? Starts with S?","☀️ Sun","🎩 Hat","🥚 Egg"],
+["Kaun M se shuru hota hai? Starts with M?","🥭 Mango","🐱 Cat","🪁 Kite"],
+["Kaun Z se shuru hota hai? Starts with Z?","🦓 Zebra","🍎 Apple","🌧️ Rain"],
+["A se kya? A is for...","🍎 Apple","⚽ Ball","🐱 Cat"]]},
+{sub:1,t:"First Words",e:"📝",L:[
+["Colours","🌈","COLOURS","रंग","KUL-urz","Aasman neela hai, ghaas hari hai, seb laal hota hai. Rang humari duniya ko sundar banate hain.","The sky is blue, grass is green, an apple is red. Colours make the world beautiful.","What colour is grass?",[["🟩","Green"],["🟥","Red"],["🟦","Blue"]],"Ask her to find three red things in the room."],
+["Big and small","🐘","OPPOSITE","उल्टा","OP-uh-zit","Haathi bada hai, chuha chhota hai. Big ka ulta small hota hai.","An elephant is big. A mouse is small. Big is the opposite of small.","What is the opposite of big?",[["🐭","Small"],["🏔️","Huge"],["🗼","Tall"]]],
+["My family","👨‍👩‍👧","FAMILY","परिवार","FAM-uh-lee","Mummy ko Mom kehte hain, Papa ko Dad. Dada-Dadi ko Grandpa aur Grandma.","Mummy is Mom. Papa is Dad. Dada and Dadi are Grandpa and Grandma.","Who is Papa in English?",[["👨","Dad"],["👩","Mom"],["👵","Grandma"]],"Say each family member's English name together at dinner."],
+["Rhyming words","🎩","RHYME","तुकबंदी","RYME","Cat aur hat ke end ki awaaz ek jaisi hai. Isse rhyme kehte hain.","Cat and hat sound alike at the end. That is a rhyme.","Which word rhymes with cat?",[["🎩","Hat"],["🐶","Dog"],["☀️","Sun"]]],
+["Action words","🏃","ACTION","काम","AK-shun","Run matlab daudna, jump matlab kudna. Ye action words hain, ye batate hain hum kya karte hain.","Run, jump and clap are action words. They tell what we do.","Which one is an action word?",[["🏃","Run"],["🍎","Apple"],["🪑","Chair"]],"Play 'Simon says' with run, jump, clap and sit."],
+["I see a...","👀","SENTENCE","वाक्य","SEN-tuns","Sentence mein words sahi order mein aate hain. I see a cat. Pehle I, phir see, phir a, phir cat.","A sentence is words in the right order. I see a cat.","Which sentence is correct?",[["📝","I see a cat."],["📝","Cat a see I."],["📝","See cat I a."]]]
+],X:[
+["Ghaas ka rang? What colour is grass?","Green","Red","Blue"],
+["Big ka ulta? Opposite of big?","Small","Huge","Tall"],
+["Papa ko English mein? Papa in English?","Dad","Mom","Grandma"],
+["Cat ke saath rhyme? Rhymes with cat?","Hat","Dog","Sun"],
+["Kaun sa action word hai? Action word?","Run","Apple","Chair"]]},
+{sub:2,t:"Counting",e:"🔢",L:[
+["Count 1 to 3","🍎","ONE TWO THREE","एक दो तीन","WUN TOO THREE","Ek seb, do seb, teen seb. Ginte waqt har cheez ko ek baar chhuo.","One apple, two apples, three apples. Touch each thing once as you count.","How many? 🍎🍎🍎",[["3️⃣","Three"],["2️⃣","Two"],["5️⃣","Five"]],"Count stairs, spoons or steps together."],
+["Count 4 to 6","🖐️","FOUR FIVE SIX","चार पाँच छह","FOR FIVE SIKS","Chaar, paanch, chhe. Ungliyon par ginti karke dekho.","Four, five, six. Count on your fingers too.","How many? ⭐⭐⭐⭐⭐",[["5️⃣","Five"],["4️⃣","Four"],["6️⃣","Six"]]],
+["Count 7 to 10","🔟","SEVEN EIGHT NINE TEN","सात आठ नौ दस","SEV-un AYT NINE TEN","Saat, aath, nau, das. Hamare haathon mein das ungliyan hoti hain!","Seven, eight, nine, ten. We have ten fingers!","How many? 🎈🎈🎈🎈🎈🎈🎈🎈",[["8️⃣","Eight"],["7️⃣","Seven"],["9️⃣","Nine"]]],
+["More or fewer","⚖️","MORE","ज़्यादा","MOR","Jis group mein zyada cheezein hon wo 'more' hai. Kam ho to 'fewer'.","The group with more things is 'more'. The smaller group is 'fewer'.","Which has MORE? 🍎🍎🍎🍎 or 🍌🍌",[["🍎","Apples"],["🍌","Bananas"],["🤝","Same"]]],
+["Shapes","🔺","SHAPES","आकार","SHAYPS","Gola circle hai, dabbe ka muh square hai, tikona triangle hai.","A ball is a circle, a box face is a square, a hat can be a triangle.","Which one is a circle?",[["⚪","Circle"],["🟦","Square"],["🔺","Triangle"]],"Go on a shape hunt: find circles at home."],
+["What comes next?","🔢","ORDER","क्रम","OR-der","1, 2, 3, 4... agla number paanch hai. Number ek ke baad ek aate hain.","1, 2, 3, 4... next is 5. Numbers go in order.","What comes after 4?",[["5️⃣","5"],["3️⃣","3"],["7️⃣","7"]]]
+],X:[
+["Kitne? How many? 🍎🍎🍎🍎","4","3","5"],
+["Kitne? How many? ⭐⭐⭐⭐⭐⭐","6","5","7"],
+["Kiske zyada? More? 🍌🍌🍌 or 🍎","Bananas","Apple","Same"],
+["Circle kaun sa? Which is a circle?","⚪","🟦","🔺"],
+["6 ke baad? After 6?","7","5","9"]]},
+{sub:2,t:"Add and Take Away",e:"➕",L:[
+["Adding means more","➕","ADD","जोड़ना","AD","Add matlab milana. Ek seb aur ek seb milakar do seb ho gaye.","Add means put together. One apple and one apple make two apples.","1 + 1 = ?",[["2️⃣","2"],["1️⃣","1"],["3️⃣","3"]]],
+["Add more","🖐️","PLUS","प्लस","PLUS","2 + 3 = 5. Pehle do ungliyan, phir teen aur, ab paanch ungliyan hain.","2 + 3 = 5. Two fingers, three more fingers, now five.","2 + 3 = ?",[["5️⃣","5"],["4️⃣","4"],["6️⃣","6"]],"Use biscuits or beads to make small sums."],
+["Take away","➖","TAKE AWAY","घटाना","TAYK uh-WAY","Teen mein se ek le lo to do bachte hain. 3 - 1 = 2.","Take one from three and two are left. 3 - 1 = 2.","3 - 1 = ?",[["2️⃣","2"],["3️⃣","3"],["1️⃣","1"]]],
+["Zero","⭕","ZERO","शून्य","ZEE-roh","Zero matlab kuch nahi. Plate mein koi biscuit nahi hai to zero biscuit.","Zero means none. An empty plate has zero biscuits.","How many cookies are on an empty plate?",[["0️⃣","0"],["1️⃣","1"],["2️⃣","2"]]],
+["Doubles","👯","DOUBLE","दुगना","DUB-ul","Double matlab dugna. 2 + 2 = 4.","Double means two times. 2 + 2 = 4.","2 + 2 = ?",[["4️⃣","4"],["3️⃣","3"],["2️⃣","2"]]],
+["Story sums","🧺","PROBLEM","सवाल","PROB-lum","Meera ke paas 3 ball the. Use 2 aur mile. Ab uske paas 5 ball hain.","Meera had 3 balls and got 2 more. Now she has 5.","Meera has 4 sweets and eats 1. How many are left?",[["3️⃣","3"],["5️⃣","5"],["4️⃣","4"]],"Make up story sums from her toys or snacks."]
+],X:[
+["1 + 2 = ?","3","2","4"],
+["4 + 1 = ?","5","4","6"],
+["3 - 2 = ?","1","2","0"],
+["Khaali plate mein kitne? Empty plate?","0","1","2"],
+["2 + 2 = ?","4","3","5"]]},
+{sub:3,t:"My World",e:"🌍",L:[
+["Animals and sounds","🐮","ANIMALS","जानवर","AN-uh-mulz","Gaay 'moo' bolti hai, kutta 'bhow bhow', billi 'meow'. Har janwar ki apni awaaz hoti hai.","A cow says moo, a dog says woof, a cat says meow.","Which animal says moo?",[["🐮","Cow"],["🐶","Dog"],["🐱","Cat"]]],
+["My body","🖐️","BODY","शरीर","BOD-ee","Aankhon se dekhte hain, kaanon se sunte hain, naak se sungte hain, haathon se pakadte hain.","We see with eyes, hear with ears, smell with a nose and hold with hands.","What do we hear with?",[["👂","Ears"],["👁️","Eyes"],["👃","Nose"]],"Play 'touch your nose' using English and Hindi names."],
+["Seasons","🌦️","SEASONS","मौसम","SEE-zunz","Garmi, baarish aur sardi teen mausam hain. Garmi mein dhoop tez hoti hai.","Summer, rainy season and winter are seasons. Summer is hot.","Which season is very hot?",[["☀️","Summer"],["❄️","Winter"],["🌧️","Rainy season"]]],
+["Days of the week","📅","WEEK","हफ़्ता","WEEK","Hafte mein saat din hote hain: Somvaar se Ravivaar. Monday se Sunday.","A week has seven days: Monday to Sunday.","How many days are in a week?",[["7️⃣","Seven"],["5️⃣","Five"],["1️⃣","One"]]],
+["Our flag","🇮🇳","FLAG","झंडा","FLAG","Humare tirange mein kesariya, safed aur hara rang hai. Beech mein neela chakra hai.","Our flag has saffron, white and green, with a blue wheel in the middle.","Which flag is India's?",[["🇮🇳","India"],["🇺🇸","USA"],["🇯🇵","Japan"]],"Look at the flag together on Republic Day or Independence Day."],
+["Festivals","🪔","DIWALI","दिवाली","di-WAH-lee","Diwali par hum diye jalate hain aur mithai khate hain. Holi par rang khelte hain.","On Diwali we light diyas and eat sweets. On Holi we play with colours.","Which festival has diyas?",[["🪔","Diwali"],["🎄","Christmas"],["🎃","Halloween"]]],
+["Vehicles","🚌","VEHICLE","गाड़ी","VEE-ih-kul","Bus, car aur train hamein ek jagah se doosri jagah le jaati hain. Aeroplane hawa mein udta hai.","Buses, cars and trains take us places. An aeroplane flies in the sky.","Which one flies in the sky?",[["✈️","Aeroplane"],["🚌","Bus"],["🚲","Bicycle"]]]
+],X:[
+["Gaay kya bolti hai? What does a cow say?","Moo","Meow","Woof"],
+["Hum kisse sunte hain? We hear with...","Ears","Eyes","Nose"],
+["Sabse garam mausam? Hottest season?","Summer","Winter","Rainy season"],
+["Hafte mein kitne din? Days in a week?","7","5","1"],
+["Bharat ka jhanda? India's flag?","🇮🇳","🇺🇸","🇯🇵"]]},
+{sub:4,t:"Being a Good Friend",e:"💜",L:[
+["Say hello","👋","HELLO","नमस्ते","heh-LOH","Naye dost ko dekh kar muskuraao aur Namaste ya Hello bolo. Isse dosti shuru hoti hai.","Smile and say hello or namaste to someone new. This is how friendship starts.","A new child is at the park. What can you say?",[["👋","Hello! Want to play?"],["🙈","Hide and say nothing"],["😠","Go away"]],"Practise saying hello to a neighbour or shopkeeper today."],
+["Sharing","🤝","SHARE","बाँटना","SHAIR","Jab hum apni cheez dosto ke saath baantte hain, sab khush hote hain. Share karna accha hai.","When we share with friends, everyone feels happy.","You have two biscuits and a friend has none. What do you do?",[["🍪","Share one"],["🙅","Hide them"],["😝","Eat both"]],"Let her share a snack with a friend or sibling and ask how it felt."],
+["Please and thank you","🙏","PLEASE","कृपया","PLEEZ","Kuch maangte waqt Please bolte hain. Kuch milne par Thank you bolte hain.","We say please when we ask. We say thank you when we get something.","Someone gave you water. What do you say?",[["🙏","Thank you"],["🙄","Nothing"],["😤","Give more"]]],
+["Saying sorry","💛","SORRY","माफ़ी","SOR-ee","Galti ho jaye to Sorry bolo aur theek karne ki koshish karo. Sorry kehna bahaduri hai.","If we make a mistake we say sorry and try to fix it. Saying sorry is brave.","You bumped into a friend by mistake. What do you do?",[["💛","Say sorry"],["🏃","Run away"],["😠","Blame them"]]],
+["Be kind","🌸","KIND","दयालु","KYND","Kisi ki madad karna, kisi ko gale lagana ya kisi ko hasaana, ye sab kindness hai.","Helping someone, giving a hug or making someone smile is kindness.","A friend is sad. What is a kind thing to do?",[["🤗","Give a hug and ask"],["😂","Laugh at them"],["🚶","Walk away"]],"Do one kind thing as a family today and talk about it at night."],
+["My feelings","😊","FEELINGS","भावनाएँ","FEE-lingz","Kabhi hum khush, kabhi udaas, kabhi gusse mein hote hain. Saari feelings theek hain. Hum unhe bol sakte hain.","Sometimes we feel happy, sad or angry. All feelings are okay. We can say them out loud.","You feel angry. What helps?",[["🌬️","Deep breaths, then tell a grown-up"],["💥","Hit someone"],["🙊","Hide it forever"]],"Ask 'How are you feeling today?' every evening and just listen."],
+["Try again","🌱","TRY","कोशिश","TRY","Galti hona seekhne ka hissa hai. Gir jao to uth kar phir koshish karo. Koshish karne wale aage badhte hain.","Mistakes are part of learning. If you fall, get up and try again.","You could not finish the puzzle. What do you do?",[["🌱","Try again"],["😭","Quit forever"],["💥","Break the puzzle"]],"Praise her effort, not only the result."],
+["Stay safe","🛡️","SAFE","सुरक्षित","SAYF","Agar koi baat galat lage, to turant Mummy-Papa ya bharose ke bade ko batao. Kisi ke saath akele mat jao.","If something feels wrong, tell your mom, dad or a trusted grown-up right away.","Something makes you feel scared. What do you do?",[["🛡️","Tell a trusted grown-up"],["🤐","Keep it secret"],["🏃","Go with a stranger"]],"Agree on her trusted grown-ups, and tell her she will never be in trouble for telling you."]
+],X:[
+["Naya bachcha mile to? A new child at the park?","Say hello and invite","Say nothing","Go away"],
+["Dost ke paas biscuit nahi. Kya karein? Friend has none?","Share one","Hide them","Eat both"],
+["Paani mila. Kya bolein? You got water?","Thank you","Nothing","Give more"],
+["Galti se takra gaye. Kya karein? You bumped a friend?","Say sorry","Run away","Blame them"],
+["Dar lage to kisko batayein? If scared, tell...","A trusted grown-up","Nobody","A stranger"]]}
 ];
+const SUBS=[["Computers","💻"],["English","🔤"],["Math","🔢"],["GK","🌍"],["Life Skills","💜"]];
+const cnt={};STAGES.forEach(st=>{cnt[st.sub]=(cnt[st.sub]||0)+1;st.no=cnt[st.sub]});
 
 // flatten: stage 1 lessons keep ids 0-19, so older saved progress still works
 const ALL=[];
-STAGES.forEach((st,si)=>{st.first=ALL.length;st.L.forEach(a=>ALL.push(Object.assign(mk(a),{s:si})));st.exi=ALL.length;ALL.push({s:si,exam:st.X,title:"Stage "+(si+1)+" Boss Quiz",emoji:"🏆"})});
+STAGES.forEach((st,si)=>{st.first=ALL.length;st.L.forEach(a=>ALL.push(Object.assign(mk(a),{s:si})));st.exi=ALL.length;ALL.push({s:si,exam:st.X,title:"Stage "+st.no+" Boss Quiz",emoji:"🏆"})});
 
 const $=id=>document.getElementById(id);
 const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
@@ -260,7 +350,9 @@ try{
 }catch(e){}
 
 const done=i=>progress.completed.includes(i);
-const stageOpen=s=>s===0||done(STAGES[s-1].exi)||location.hash==="#open";
+const prevS=s=>{for(let k=s-1;k>=0;k--)if(STAGES[k].sub===STAGES[s].sub)return k;return -1};
+const nextS=s=>{for(let k=s+1;k<STAGES.length;k++)if(STAGES[k].sub===STAGES[s].sub)return k;return -1};
+const stageOpen=s=>{const p=prevS(s);return p<0||done(STAGES[p].exi)||location.hash==="#open"};
 function save(){try{localStorage.setItem("lteProgress",JSON.stringify(progress))}catch(e){}updateStats();renderTabs();renderList();renderBadges()}
 
 function rewards(){
@@ -269,7 +361,7 @@ function rewards(){
  if(n>=5)r.push("🖐️ Five-lesson explorer");
  if(n>=10)r.push("🏅 Computer parts pro");
  if(n>=20)r.push("🚀 Super learner");
- STAGES.forEach((st,i)=>{if(done(st.exi))r.push("🏆 Stage "+(i+1)+" graduate")});
+ STAGES.forEach(st=>{if(done(st.exi))r.push("🏆 "+SUBS[st.sub][0]+" Stage "+st.no)});
  return r;
 }
 function updateStats(){
@@ -282,7 +374,8 @@ function updateStats(){
  $("percentage").textContent=pc+"% complete";
 }
 function renderTabs(){
- $("tabs").innerHTML=STAGES.map((st,i)=>`<button class="tab ${i===cs?'active':''} ${stageOpen(i)?'':'locked'}" aria-label="Stage ${i+1}${stageOpen(i)?'':' locked'}" onclick="openStage(${i})">${stageOpen(i)?st.e:'🔒'} Stage ${i+1}</button>`).join("");
+ $("subs").innerHTML=SUBS.map((x,i)=>`<button class="tab ${i===STAGES[cs].sub?'active':''}" aria-label="${x[0]}" onclick="openStage(STAGES.findIndex(t=>t.sub===${i}))">${x[1]} ${x[0]}</button>`).join("");
+ $("tabs").innerHTML=STAGES.map((st,i)=>st.sub!==STAGES[cs].sub?"":`<button class="tab ${i===cs?'active':''} ${stageOpen(i)?'':'locked'}" aria-label="Stage ${st.no}${stageOpen(i)?'':' locked'}" onclick="openStage(${i})">${stageOpen(i)?st.e:'🔒'} Stage ${st.no}</button>`).join("");
 }
 function renderList(){
  $("lessonList").innerHTML=ALL.map((l,i)=>l.s===cs?`
@@ -309,22 +402,19 @@ function speak(text,cb,lang){
 
 function openStage(s){
  if(!stageOpen(s)){
-  const m="🔒 Pass the Stage "+s+" Boss Quiz to open this stage.";
-  $("feedback").textContent=m;speak("Pehle Stage "+s+" ka quiz pass karo.");return;
+  const n=STAGES[prevS(s)].no;
+  $("feedback").textContent="🔒 Pass the Stage "+n+" Boss Quiz to open this stage.";speak("Pehle Stage "+n+" ka quiz pass karo.");return;
  }
  cs=s;renderTabs();showLesson(STAGES[s].first);
 }
-function startLearning(){
- let s=0;while(s<STAGES.length-1&&stageOpen(s+1)&&done(STAGES[s].exi))s++;
- cs=s;const st=STAGES[s];let i=st.first;while(i<st.exi&&done(i))i++;
- showLesson(i);
-}
+function startLearning(){const i=ALL.findIndex((l,k)=>!done(k)&&stageOpen(l.s));showLesson(i<0?0:i)}
 
 function showLesson(i){
  current=Math.max(0,Math.min(ALL.length-1,i));
  const l=ALL[current];cs=l.s;ex=null;
- $("lessonNumber").textContent=(l.exam?"BOSS QUIZ · STAGE ":"LESSON ")+(l.exam?cs+1:String(current-STAGES[cs].first+1).padStart(2,"0"));
+ $("lessonNumber").textContent=SUBS[STAGES[cs].sub][0].toUpperCase()+" · "+(l.exam?"BOSS QUIZ · STAGE "+STAGES[cs].no:"LESSON "+String(current-STAGES[cs].first+1).padStart(2,"0"));
  $("title").textContent=l.title;
+ $("tip").style.display=l.p?"":"none";$("tip").textContent=l.p?"👪 Grown-up idea: "+l.p:"";
  $("picture").textContent=l.emoji;
  $("feedback").textContent="";$("track").textContent="";
  const ls=!l.exam;
@@ -386,9 +476,9 @@ function examEnd(){
  $("track").textContent=ok?"🏆":"🚀";$("question").textContent=ex.score+" / 5";
  if(ok){
   if(!done(current)){progress.completed.push(current);progress.stars+=3;save()}
-  const last=s===STAGES.length-1;
-  $("options").innerHTML=last?"":`<button class="start" onclick="openStage(${s+1})">Start Stage ${s+2} 🚀</button>`;
-  $("feedback").textContent=last?"🎉 All stages complete! You are a Super Explorer!":"🎉 You passed! Stage "+(s+2)+" is open!";
+  const nx=nextS(s);
+  $("options").innerHTML=nx<0?"":`<button class="start" onclick="openStage(${nx})">Start Stage ${STAGES[nx].no} 🚀</button>`;
+  $("feedback").textContent=nx<0?"🎉 "+SUBS[STAGES[s].sub][0]+" complete! Shabash!":"🎉 You passed! Stage "+STAGES[nx].no+" is open!";
   speak("Shabash! Aap pass ho gaye!");
  }else{
   $("options").innerHTML='<button class="start" onclick="startExam()">Try again 🔁</button>';
@@ -419,7 +509,7 @@ function downloadProgress(){
  a.href=u;a.download="little-tech-explorer-progress.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
 }
 $("sound").onclick=()=>{soundOn=!soundOn;$("sound").textContent=soundOn?"🔊 Sound ON":"🔇 Sound OFF";if(!soundOn&&"speechSynthesis" in window)speechSynthesis.cancel()};
-$("foot").textContent="Made with ❤️ for curious little minds · 5 stages";
+$("foot").textContent="Made with ❤️ for curious little minds · Computers, English, Math, GK and Life Skills";
 updateStats();renderTabs();renderList();renderBadges();showLesson(0);
 </script>
 </body>
