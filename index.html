@@ -191,18 +191,21 @@
       </div>
 
       <!-- Home Hub Tabs -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <button type="button" data-hometab="chapters" class="home-tab-btn tap-card py-3 px-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 bg-rose-500 text-white shadow-md">
-          <span class="text-lg">🚀</span><span>8 Progressive Eras</span>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+        <button type="button" data-hometab="chapters" class="home-tab-btn tap-card py-3 px-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 bg-rose-500 text-white shadow-md">
+          <span class="text-lg">🚀</span><span>8 Eras</span>
         </button>
-        <button type="button" data-hometab="draw" class="home-tab-btn tap-card py-3 px-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-rose-300">
-          <span class="text-lg">🎨</span><span>Draw &amp; Trace</span>
+        <button type="button" data-hometab="spy" class="home-tab-btn tap-card py-3 px-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-indigo-400">
+          <span class="text-lg">🕵️‍♀️</span><span>Spy HQ</span>
         </button>
-        <button type="button" data-hometab="music" class="home-tab-btn tap-card py-3 px-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-teal-300">
-          <span class="text-lg">🎹</span><span>Rhymes &amp; Piano</span>
+        <button type="button" data-hometab="draw" class="home-tab-btn tap-card py-3 px-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-rose-300">
+          <span class="text-lg">🎨</span><span>Draw</span>
         </button>
-        <button type="button" data-hometab="stickers" class="home-tab-btn tap-card py-3 px-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-amber-300">
-          <span class="text-lg">🦄</span><span>Sticker Book</span>
+        <button type="button" data-hometab="music" class="home-tab-btn tap-card py-3 px-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-teal-300">
+          <span class="text-lg">🎹</span><span>Rhymes</span>
+        </button>
+        <button type="button" data-hometab="stickers" class="home-tab-btn tap-card py-3 px-2.5 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 bg-white text-slate-700 border-2 border-white shadow-sm hover:border-amber-300 col-span-2 sm:col-span-1">
+          <span class="text-lg">🦄</span><span>Stickers</span>
         </button>
       </div>
 
@@ -215,6 +218,7 @@
           <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-700">🔢 Maths (KG → Algebra/Pythagoras)</span>
           <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">🌍 GK &amp; Science</span>
           <span class="px-2.5 py-1 rounded-full bg-slate-800 text-cyan-300 mono">💻 Code IDE, Neural AI &amp; Gym</span>
+          <span class="px-2.5 py-1 rounded-full bg-amber-900 text-amber-200">🕵️‍♀️ Street-Smart &amp; Spy IQ</span>
         </div>
         <div id="erasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
       </div>
@@ -281,6 +285,50 @@
         </div>
         <div id="stickersGrid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3"></div>
       </div>
+
+      <!-- TAB 5: SPY HQ — STREET-SMART & INDEPENDENCE ACADEMY -->
+      <div id="tabSpy" class="hidden bg-slate-900 text-slate-100 rounded-3xl p-5 sm:p-6 shadow-2xl border-2 border-amber-400/50 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 text-3xl flex items-center justify-center shadow-lg">🕵️‍♀️</div>
+            <div>
+              <div class="text-[10px] font-black uppercase tracking-widest text-amber-400">Secret Agent Independence Training</div>
+              <h3 class="text-lg sm:text-xl font-black text-white">Street-Smart &amp; Read-Between-the-Lines HQ</h3>
+              <p class="hindi text-xs font-bold text-rose-300">खुद निर्णय लेना सीखो • <span class="gujarati text-teal-300">સ્માર્ટ અને આત્મનિર્ભર બનો!</span></p>
+            </div>
+          </div>
+          <div class="px-3.5 py-2 rounded-2xl bg-amber-400/15 border border-amber-400/40 text-amber-300 font-black text-xs">
+            🧠 Street-Smart Score: <span id="spyIqScore">0</span>
+          </div>
+        </div>
+
+        <!-- 4 Golden Spy Rules for Independence -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+          <div class="p-3 rounded-2xl bg-slate-800 border border-slate-700">
+            <div class="text-2xl mb-1">👀</div>
+            <div class="text-xs font-black text-cyan-300">1. OBSERVE</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Notice faces, exits &amp; clues first</div>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-800 border border-slate-700">
+            <div class="text-2xl mb-1">🧩</div>
+            <div class="text-xs font-black text-amber-300">2. READ CLUES</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Look past sweet words to true intent</div>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-800 border border-slate-700">
+            <div class="text-2xl mb-1">🧠</div>
+            <div class="text-xs font-black text-emerald-300">3. THINK FIRST</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Try solving yourself before asking</div>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-800 border border-slate-700">
+            <div class="text-2xl mb-1">🛡️</div>
+            <div class="text-xs font-black text-rose-300">4. ACT SMART</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Say firm NO &amp; stay calm under pressure</div>
+          </div>
+        </div>
+
+        <!-- Interactive Live Spy Mission Simulator -->
+        <div id="spyMissionCard" class="p-5 rounded-2xl bg-slate-800/90 border border-cyan-500/30 space-y-4"></div>
+      </div>
     </section>
 
     <!-- VIEW 2: ERA MODULE BOARD (TRANSFORMS UI PER ERA!) -->
@@ -335,11 +383,12 @@
         </button>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <button type="button" data-gymcat="math" class="gym-cat-btn tap-card py-3 px-3 rounded-2xl font-black text-xs sm:text-sm bg-amber-400 text-slate-950 shadow">🔢 Olympiad Math</button>
-        <button type="button" data-gymcat="trilingual" class="gym-cat-btn tap-card py-3 px-3 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-slate-200 border border-slate-700">🌐 EN↔HI↔GU Vocab</button>
-        <button type="button" data-gymcat="gk" class="gym-cat-btn tap-card py-3 px-3 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-slate-200 border border-slate-700">🌍 GSEB+CBSE GK</button>
-        <button type="button" data-gymcat="code" class="gym-cat-btn tap-card py-3 px-3 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-slate-200 border border-slate-700 mono">💻 Code &amp; AI</button>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+        <button type="button" data-gymcat="math" class="gym-cat-btn tap-card py-3 px-2.5 rounded-2xl font-black text-xs sm:text-sm bg-amber-400 text-slate-950 shadow">🔢 Math</button>
+        <button type="button" data-gymcat="spy" class="gym-cat-btn tap-card py-3 px-2.5 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-amber-300 border border-amber-500/40">🕵️‍♀️ Street-Smart</button>
+        <button type="button" data-gymcat="trilingual" class="gym-cat-btn tap-card py-3 px-2.5 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-slate-200 border border-slate-700">🌐 EN↔HI↔GU</button>
+        <button type="button" data-gymcat="gk" class="gym-cat-btn tap-card py-3 px-2.5 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-slate-200 border border-slate-700">🌍 GK</button>
+        <button type="button" data-gymcat="code" class="gym-cat-btn tap-card py-3 px-2.5 rounded-2xl font-black text-xs sm:text-sm bg-slate-800 text-slate-200 border border-slate-700 mono col-span-2 sm:col-span-1">💻 Code &amp; AI</button>
       </div>
 
       <div class="era-surface rounded-3xl p-5 sm:p-7 border-2 shadow-2xl space-y-5">
@@ -438,6 +487,10 @@
             <button id="testGuVoiceBtn" type="button" class="mt-1 text-xs font-extrabold text-teal-600 hover:underline">🔊 Test ગુજરાતી</button>
           </div>
         </div>
+        <div id="voiceStatusBox" class="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+          <div class="font-extrabold text-slate-700">🎙️ Device Native Voice Check:</div>
+          <div id="voiceStatusList" class="text-slate-600 leading-relaxed">Checking installed voices...</div>
+        </div>
 
         <div>
           <label for="speechRateRange" class="flex justify-between font-bold text-slate-700 mb-1 text-xs">
@@ -524,8 +577,20 @@
       }
       function stopSongs() { songTimers.forEach(function (t) { clearTimeout(t); }); songTimers = []; }
 
+      function localizeForIndicTTS(text, lang) {
+        let t = stripEmoji(text || '');
+        if (!t) return '';
+        if (lang === 'hi') {
+          t = t.replace(/\bAI\b/g, 'ए आई').replace(/\bPython\b/gi, 'पायथन').replace(/\bLLM\b/g, 'एल एल एम').replace(/\bIDE\b/g, 'आई डी ई').replace(/\bSTEM\b/g, 'स्टेम').replace(/\bGSEB\b/g, 'जी एस ई बी').replace(/\bCBSE\b/g, 'सी बी एस ई');
+        } else if (lang === 'gu') {
+          t = t.replace(/\bAI\b/g, 'એ આઈ').replace(/\bPython\b/gi, 'પાયથન').replace(/\bLLM\b/g, 'એલ એલ એમ').replace(/\bIDE\b/g, 'આઈ ડી ઈ').replace(/\bSTEM\b/g, 'સ્ટેમ').replace(/\bGSEB\b/g, 'જી એસ ઈ બી').replace(/\bCBSE\b/g, 'સી બી એસ ઈ');
+        }
+        return t;
+      }
+
       const SpeechEngine = {
         voices: [], enVoice: null, hiVoice: null, guVoice: null, fallbackTimer: null,
+        warnedMissing: { hi: false, gu: false },
         lastSpoken: { speaker: 'tara', en: '', hi: '', gu: '' },
         init: function () {
           if (!('speechSynthesis' in window)) return;
@@ -534,19 +599,60 @@
             if (!list.length) return;
             this.voices = list; this.pickDefaultVoices(); populateVoiceDropdowns();
           };
-          load(); window.speechSynthesis.onvoiceschanged = load;
+          load();
+          window.speechSynthesis.onvoiceschanged = load;
+          // Retry briefly for browsers that load cloud voices asynchronously
+          setTimeout(load, 400);
+          setTimeout(load, 1200);
+        },
+        scoreVoice: function (v, targetLang) {
+          const name = (v.name || '').toLowerCase();
+          const lang = (v.lang || '').toLowerCase().replace('_', '-');
+          let score = 0;
+          if (targetLang === 'hi') {
+            if (lang === 'hi-in') score += 100;
+            else if (lang.startsWith('hi')) score += 85;
+            else if (/hindi|हिन्दी|swara|lekha|kalpana|madhur|hemant/.test(name)) score += 70;
+            else return -1;
+            if (/natural|online|google हिन्दी|google hindi/.test(name)) score += 50;
+            if (/swara|lekha|kalpana|female/.test(name)) score += 30;
+          } else if (targetLang === 'gu') {
+            if (lang === 'gu-in') score += 100;
+            else if (lang.startsWith('gu')) score += 85;
+            else if (/gujarati|ગુજરાતી|dhwani|niranjan/.test(name)) score += 70;
+            else return -1;
+            if (/natural|online|google ગુજરાતી|google gujarati/.test(name)) score += 50;
+            if (/dhwani|female/.test(name)) score += 30;
+          } else {
+            if (lang === 'en-in') score += 100;
+            else if (lang.startsWith('en')) score += 60;
+            else return -1;
+            if (/natural|online|google/.test(name)) score += 40;
+            if (/neerja|heera|veena|isha|samantha|aria|jenny|zira|female/.test(name)) score += 30;
+          }
+          return score;
+        },
+        pickBest: function (targetLang, savedName) {
+          const list = this.voices;
+          if (savedName) {
+            const exact = list.find(function (v) { return v.name === savedName; });
+            if (exact) return exact;
+          }
+          let best = null, bestScore = -1;
+          list.forEach((v) => {
+            const sc = this.scoreVoice(v, targetLang);
+            if (sc > bestScore) { bestScore = sc; best = v; }
+          });
+          return bestScore >= 0 ? best : null;
         },
         pickDefaultVoices: function () {
-          const list = this.voices;
-          const hiList = list.filter(function (v) { return /^hi/i.test(v.lang) || /hindi|हिन्दी|swara|lekha|kalpana/i.test(v.name); });
-          this.hiVoice = (state.hiVoiceName && list.find(function (v) { return v.name === state.hiVoiceName; })) || hiList.find(function (v) { return /swara|lekha|kalpana|google हिन्दी|female/i.test(v.name); }) || hiList[0] || null;
-
-          const guList = list.filter(function (v) { return /^gu/i.test(v.lang) || /gujarati|ગુજરાતી|dhwani/i.test(v.name); });
-          this.guVoice = (state.guVoiceName && list.find(function (v) { return v.name === state.guVoiceName; })) || guList.find(function (v) { return /dhwani|google|female/i.test(v.name); }) || guList[0] || null;
-
-          const enIn = list.filter(function (v) { return /^en-IN/i.test(v.lang); });
-          const enAll = list.filter(function (v) { return /^en/i.test(v.lang); });
-          this.enVoice = (state.enVoiceName && list.find(function (v) { return v.name === state.enVoiceName; })) || enIn.find(function (v) { return /heera|veena|neerja|google|female/i.test(v.name); }) || enIn[0] || enAll.find(function (v) { return /samantha|zira|aria|jenny|karen|google us english|female/i.test(v.name); }) || enAll[0] || null;
+          if ('speechSynthesis' in window) {
+            const fresh = window.speechSynthesis.getVoices() || [];
+            if (fresh.length) this.voices = fresh;
+          }
+          this.hiVoice = this.pickBest('hi', state.hiVoiceName);
+          this.guVoice = this.pickBest('gu', state.guVoiceName);
+          this.enVoice = this.pickBest('en', state.enVoiceName);
         },
         stop: function () {
           if (this.fallbackTimer) { clearTimeout(this.fallbackTimer); this.fallbackTimer = null; }
@@ -557,32 +663,56 @@
           this.lastSpoken = { speaker: speaker || 'tara', en: enText || '', hi: hiText || '', gu: guText || '' };
           updateTeacherBubble(speaker || 'tara', enText || '', hiText || '', guText || '');
           if (!state.soundOn || !('speechSynthesis' in window)) return;
+          this.pickDefaultVoices();
           this.stop();
+
           const mode = forceLang || state.langMode, queue = [];
-          const cEn = stripEmoji(enText || ''), cHi = stripEmoji(hiText || ''), cGu = stripEmoji(guText || '');
+          const cEn = stripEmoji(enText || '');
+          const cHi = localizeForIndicTTS(hiText || '', 'hi');
+          const cGu = localizeForIndicTTS(guText || '', 'gu');
+
+          const pushHi = () => {
+            if (!cHi) return;
+            if (this.hiVoice) queue.push({ text: cHi, lang: 'hi-IN', voice: this.hiVoice });
+            else if (!this.warnedMissing.hi) {
+              this.warnedMissing.hi = true;
+              showToast('⚠️ Native Hindi voice not installed in this browser — open ⚙️ to see tip (Edge/Chrome on Android/Windows have Swara/Google हिन्दी)');
+            }
+          };
+          const pushGu = () => {
+            if (!cGu) return;
+            if (this.guVoice) queue.push({ text: cGu, lang: 'gu-IN', voice: this.guVoice });
+            else if (!this.warnedMissing.gu) {
+              this.warnedMissing.gu = true;
+              showToast('⚠️ Native Gujarati voice not installed in this browser — open ⚙️ for quick fix (Edge Dhwani / Android Google ગુજરાતી)');
+            }
+          };
 
           if (mode === 'en' && cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice });
-          else if (mode === 'hi' && cHi) queue.push({ text: cHi, lang: 'hi-IN', voice: this.hiVoice });
-          else if (mode === 'gu' && cGu) queue.push({ text: cGu, lang: 'gu-IN', voice: this.guVoice });
-          else if (mode === 'both') { if (cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice }); if (cHi) queue.push({ text: cHi, lang: 'hi-IN', voice: this.hiVoice }); }
-          else if (mode === 'en_gu') { if (cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice }); if (cGu) queue.push({ text: cGu, lang: 'gu-IN', voice: this.guVoice }); }
-          else { if (cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice }); if (cHi) queue.push({ text: cHi, lang: 'hi-IN', voice: this.hiVoice }); if (cGu) queue.push({ text: cGu, lang: 'gu-IN', voice: this.guVoice }); }
+          else if (mode === 'hi') pushHi();
+          else if (mode === 'gu') pushGu();
+          else if (mode === 'both') { if (cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice }); pushHi(); }
+          else if (mode === 'en_gu') { if (cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice }); pushGu(); }
+          else { if (cEn) queue.push({ text: cEn, lang: 'en-IN', voice: this.enVoice }); pushHi(); pushGu(); }
 
           if (!queue.length) return;
           setSpeakingVisual(speaker || 'tara');
-          let idx = 0; const pitch = speaker === 'sneha' ? 1.14 : 1.05, rate = state.speechRate || 0.88;
+          let idx = 0;
+          const rate = state.speechRate || 0.90;
           const speakNext = () => {
             if (idx >= queue.length) { setSpeakingVisual(null); return; }
             const item = queue[idx++];
             const u = new SpeechSynthesisUtterance(item.text);
+            u.voice = item.voice;
             u.lang = item.voice ? item.voice.lang : item.lang;
-            if (item.voice) u.voice = item.voice;
-            u.rate = (item.lang.startsWith('hi') || item.lang.startsWith('gu')) ? Math.max(0.74, rate - 0.02) : rate;
-            u.pitch = pitch;
+            const isIndic = item.lang.startsWith('hi') || item.lang.startsWith('gu');
+            // Keep natural 1.0 pitch for Indic voices so they never sound robotic or foreign!
+            u.pitch = isIndic ? (speaker === 'sneha' ? 1.03 : 1.0) : (speaker === 'sneha' ? 1.08 : 1.02);
+            u.rate = isIndic ? Math.max(0.82, Math.min(1.0, rate)) : rate;
             let done = false;
             const fin = () => { if (done) return; done = true; if (this.fallbackTimer) { clearTimeout(this.fallbackTimer); this.fallbackTimer = null; } speakNext(); };
             u.onend = fin; u.onerror = fin;
-            this.fallbackTimer = setTimeout(fin, Math.max(2400, item.text.length * 115));
+            this.fallbackTimer = setTimeout(fin, Math.max(2600, item.text.length * 125));
             try { window.speechSynthesis.speak(u); } catch (e) { fin(); }
           };
           speakNext();
@@ -660,6 +790,7 @@
         maths:    { icon:'🔢', en:'Maths', hi:'गणित', gu:'ગણિત', bg:'bg-sky-50 border-sky-200', darkBg:'bg-slate-800/90 border-sky-500/40', badge:'bg-sky-100 text-sky-700', teacher:'sneha' },
         gk:       { icon:'🌍', en:'GK & Science', hi:'ज्ञान-विज्ञान', gu:'જ્ઞાન-વિજ્ઞાન', bg:'bg-emerald-50 border-emerald-200', darkBg:'bg-slate-800/90 border-emerald-500/40', badge:'bg-emerald-100 text-emerald-700', teacher:'tara' },
         comp:     { icon:'💻', en:'AI & Code', hi:'कंप्यूटर और AI', gu:'કોડિંગ અને AI', bg:'bg-violet-50 border-violet-200', darkBg:'bg-slate-800/90 border-cyan-400/50', badge:'bg-violet-100 text-violet-700', teacher:'sneha' },
+        spy:      { icon:'🕵️‍♀️', en:'Spy & Street-Smart', hi:'जासूस और समझदारी', gu:'સ્માર્ટ જાસૂસ', bg:'bg-amber-50 border-amber-300', darkBg:'bg-slate-800/95 border-amber-400/60', badge:'bg-amber-200 text-amber-900', teacher:'sneha' },
         exam:     { icon:'🏆', en:'Era Boss Exam', hi:'युग परीक्षा', gu:'યુગ પરીક્ષા', bg:'bg-gradient-to-br from-amber-50 to-rose-50 border-amber-300', darkBg:'bg-gradient-to-br from-amber-950/70 to-indigo-950/80 border-amber-400/60', badge:'bg-amber-200 text-amber-900', teacher:'tara' }
       };
 
@@ -677,6 +808,7 @@
             { id:'e1_ma', subject:'maths', type:'count', titleEn:'Trilingual Counting 1–10', titleHi:'गिनती • ગણતરી', rounds:[{ emoji:'🍎', count:3, qEn:'Count the apples!', qHi:'सेब गिनो!', qGu:'સફરજન ગણો!', choices:[2,3,5] },{ emoji:'🪁', count:6, qEn:'Count the kites!', qHi:'पतंगें गिनो!', qGu:'પતંગો ગણો!', choices:[5,6,8] }] },
             { id:'e1_gk', subject:'gk', type:'memory', titleEn:'Colors & Shapes Match', titleHi:'रंग और आकार', introEn:'Match the color & shape pairs!', introHi:'रंग और आकार की जोड़ी बनाओ!', introGu:'રંગ અને આકારની જોડી બનાવો!', pairs:[{ id:'r', emoji:'🔴', en:'Red!', hi:'लाल!', gu:'લાલ!' },{ id:'s', emoji:'⭐', en:'Star!', hi:'तारा!', gu:'તારો!' },{ id:'t', emoji:'🔺', en:'Triangle!', hi:'त्रिभुज!', gu:'ત્રિકોણ!' },{ id:'g', emoji:'🟢', en:'Green!', hi:'हरा!', gu:'લીલો!' }] },
             { id:'e1_co', subject:'comp', type:'explore', titleEn:'Computer Parts & Manners', titleHi:'कंप्यूटर और संस्कार', introEn:'Meet computer parts & magic words!', introHi:'कंप्यूटर और अच्छे संस्कार सीखो!', introGu:'કમ્પ્યુટર અને સારા સંસ્કાર શીખો!', cards:[{ emoji:'🖥️', label:'Screen', sub:'स्क्रीन • સ્ક્રીન', en:'Screen shows pictures!', hi:'स्क्रीन पर तस्वीरें दिखती हैं!', gu:'સ્ક્રીન પર ચિત્રો દેખાય છે!' },{ emoji:'🖱️', label:'Mouse', sub:'माउस • માઉસ', en:'Mouse clicks & points!', hi:'माउस से क्लिक करते हैं!', gu:'માઉસથી ક્લિક થાય છે!' },{ emoji:'🙏', label:'Namaste', sub:'नमस्ते • નમસ્તે', en:'Greet elders with Namaste!', hi:'बड़ों को नमस्ते बोलो!', gu:'વડીલોને નમસ્તે કહો!' },{ emoji:'😊', label:'Thank You', sub:'धन्यवाद • આભાર', en:'Always say Thank You!', hi:'हमेशा धन्यवाद बोलो!', gu:'હંમેશા આભાર માનો!' }], quiz:[{ qEn:'Which part shows pictures?', qHi:'तस्वीरें किस पर दिखती हैं?', qGu:'ચિત્રો શેના પર દેખાય?', options:[{ emoji:'🖥️', label:'Screen', correct:true },{ emoji:'🖱️', label:'Mouse', correct:false }] }] },
+            { id:'e1_spy', subject:'spy', type:'quiz', titleEn:'🕵️‍♀️ Eagle Eyes & Do-It-Yourself', titleHi:'आत्मनिर्भर बनो • જાતે કરો', questions:[{ qEn:'Spy Mission! Before going out, you notice one shoe is missing. What does an independent Little Agent do FIRST?', qHi:'बाहर जाने से पहले एक जूता नहीं मिल रहा। समझदार जासूस पहले क्या करेगी?', qGu:'બહાર જતા પહેલા એક બૂટ નથી મળતું. સ્માર્ટ જાસૂસ પહેલા શું કરશે?', options:[{ emoji:'👀', label:'Look carefully around the room myself!', correct:true },{ emoji:'😭', label:'Cry and wait for Papa', correct:false }] },{ qEn:'If you spill a little water on the table, what is the smart independent move?', qHi:'मेज़ पर थोड़ा पानी गिर जाए तो समझदार बच्ची क्या करेगी?', qGu:'ટેબલ પર પાણી ઢોળાય તો સ્માર્ટ બાળક શું કરશે?', options:[{ emoji:'🧻', label:'Calmly wipe it with a cloth myself!', correct:true },{ emoji:'🙈', label:'Run away and hide', correct:false }] }] },
             { id:'e1_exam', subject:'exam', type:'quiz', titleEn:'Era 1 Boss Test', titleHi:'युग 1 परीक्षा', questions:[{ qEn:'Which starts with B for Ball?', qHi:'B से गेंद कौन सी है?', qGu:'B થી દડો કયો?', options:[{ emoji:'⚽', label:'Ball', correct:true },{ emoji:'🍎', label:'Apple', correct:false }] },{ qEn:'In Gujarati, ઊ is for...?', qHi:'गुजराती में ઊ से?', qGu:'ઊ થી શું?', options:[{ emoji:'🐪', label:'ઊંટ', correct:true },{ emoji:'🐟', label:'માછલી', correct:false }] },{ qEn:'Count: ❤️ ❤️ ❤️ ❤️', qHi:'गिनो: ❤️ ❤️ ❤️ ❤️', qGu:'ગણો: ❤️ ❤️ ❤️ ❤️', options:[{ emoji:'4️⃣', label:'4', correct:true },{ emoji:'2️⃣', label:'2', correct:false }] }] }
           ]
         },
@@ -694,6 +826,7 @@
             { id:'e2_ma', subject:'maths', type:'clock', titleEn:'Talking Clock & Place Value', titleHi:'घड़ी और समय • ઘડિયાળ', rounds:[{ targetHour:3, qEn:'Set the clock to 3 o\'clock!', qHi:'घड़ी में 3 बजाओ!', qGu:'ઘડિયાળમાં ૩ વગાડો!' },{ targetHour:8, qEn:'Set the clock to 8 o\'clock!', qHi:'घड़ी में 8 बजाओ!', qGu:'ઘડિયાળમાં ૮ વગાડો!' }] },
             { id:'e2_gk', subject:'gk', type:'explore', titleEn:'My Gujarat & India (GSEB)', titleHi:'मेरा गुजरात • મારું ગુજરાત', introEn:'Learn Gujarat & India facts!', introHi:'गुजरात और भारत की बातें जानो!', introGu:'ગુજરાત અને ભારત વિશે શીખો!', cards:[{ emoji:'🦁', label:'Gir Lion', sub:'गिर का शेर • ગીરનો સિંહ', en:'Asiatic Lions live in Gir, Gujarat!', hi:'एशियाई शेर गुजरात के गिर में रहते हैं!', gu:'એશિયાટિક સિંહ ગીરમાં રહે છે!' },{ emoji:'🏛️', label:'Gandhinagar', sub:'गांधीनगर • ગાંધીનગર', en:'Gandhinagar is Gujarat\'s Capital!', hi:'गांधीनगर गुजरात की राजधानी है!', gu:'ગાંધીનગર ગુજરાતની રાજધાની છે!' },{ emoji:'🦚', label:'Peacock', sub:'मोर • મોર', en:'National Bird of India!', hi:'भारत का राष्ट्रीय पक्षी!', gu:'ભારતનું રાષ્ટ્રીય પક્ષી!' },{ emoji:'🪁', label:'Uttarayan', sub:'उत्तरायण • ઉત્તરાયણ', en:'Gujarat\'s Kite Festival on Jan 14!', hi:'14 जनवरी को उत्तरायण!', gu:'૧૪ જાન્યુઆરીએ ઉત્તરાયણ!' }], quiz:[{ qEn:'What is Gujarat\'s capital?', qHi:'गुजरात की राजधानी?', qGu:'ગુજરાતની રાજધાની?', options:[{ emoji:'🏛️', label:'Gandhinagar', correct:true },{ emoji:'🏖️', label:'Goa', correct:false }] }] },
             { id:'e2_co', subject:'comp', type:'ai_sort', titleEn:'Healthy Habits AI Sort', titleHi:'अच्छी आदतें • સારી આદતો', introEn:'Sort Good Habits vs Not Good!', introHi:'अच्छी और बुरी आदतें अलग करो!', introGu:'સારી અને ખરાબ આદતો અલગ કરો!', leftBasket:{ emoji:'🌟', labelEn:'Good Habit', labelHi:'अच्छी • સારી' }, rightBasket:{ emoji:'🚫', labelEn:'Not Good', labelHi:'बुरी • ખરાબ' }, items:[{ emoji:'🪥', en:'Brush twice daily', hi:'रोज़ ब्रश करना', gu:'રોજ બ્રશ કરવું', side:'left' },{ emoji:'📱', en:'Screen too close in dark', hi:'अंधेरे में पास से फ़ोन देखना', gu:'અંધારામાં નજીકથી ફોન જોવો', side:'right' },{ emoji:'🥗', en:'Eat fruits & veggies', hi:'फल और सब्ज़ी खाना', gu:'ફળ અને શાકભાજી ખાવા', side:'left' }] },
+            { id:'e2_spy', subject:'spy', type:'quiz', titleEn:'🕵️‍♀️ Stranger Tricks & Mall Safety', titleHi:'अजनबी की चाल पहचानो • અજાણ્યાથી સાવધાન', questions:[{ qEn:'RED ALERT! A stranger outside school smiles and says: "Your Papa sent me, come get chocolates in my car!" Read between the lines!', qHi:'सावधान! एक अनजान व्यक्ति कहता है "तुम्हारे पापा ने मुझे भेजा है, कार में चॉकलेट है!" असली बात क्या है?', qGu:'સાવધાન! અજાણી વ્યક્તિ કહે "પપ્પાએ મને મોકલ્યો છે, કારમાં ચોકલેટ છે!" સાચું પગલું શું?', options:[{ emoji:'🛡️', label:'It is a TRICK! Step back, shout NO & tell Teacher!', correct:true },{ emoji:'🍫', label:'Go to the car for chocolate', correct:false }] },{ qEn:'If you get separated from Papa in a crowded mall, what does a smart Agent do?', qHi:'भीड़ वाले मॉल में पापा थोड़ी देर न दिखें, तो समझदार जासूस क्या करेगी?', qGu:'મોલમાં પપ્પા ન દેખાય તો સ્માર્ટ જાસૂસ શું કરશે?', options:[{ emoji:'👮', label:'Stay inside, go to Security Guard / Billing Counter & tell Papa\'s phone number!', correct:true },{ emoji:'🚪', label:'Walk outside to the parking lot alone', correct:false }] }] },
             { id:'e2_exam', subject:'exam', type:'quiz', titleEn:'Era 2 Boss Test', titleHi:'युग 2 परीक्षा', questions:[{ qEn:'Capital of Gujarat?', qHi:'गुजरात की राजधानी?', qGu:'ગુજરાતની રાજધાની?', options:[{ emoji:'🏛️', label:'Gandhinagar', correct:true },{ emoji:'🏔️', label:'Shimla', correct:false }] },{ qEn:'1 Ten + 5 Ones = ?', qHi:'1 दहाई + 5 इकाई = ?', qGu:'૧ દશક + ૫ એકમ = ?', options:[{ emoji:'1️⃣5️⃣', label:'15', correct:true },{ emoji:'5️⃣1️⃣', label:'51', correct:false }] }] }
           ]
         },
@@ -711,6 +844,7 @@
             { id:'e3_ma', subject:'maths', type:'quiz', titleEn:'Multiplication Tables & Fractions', titleHi:'गुणा और भिन्न • ગુણાકાર', questions:[{ qEn:'6 × 4 equals how many?', qHi:'6 × 4 कितने होते हैं?', qGu:'૬ × ૪ કેટલા થાય?', visual:'6 × 4 = ❓', options:[{ emoji:'🏆', label:'24', correct:true },{ emoji:'🔹', label:'20', correct:false }] },{ qEn:'Half of 1 pizza is written as...?', qHi:'आधे पिज़्ज़ा को कैसे लिखते हैं?', qGu:'અડધા પિઝાને કેવી રીતે લખાય?', visual:'🍕 ÷ 2 = ❓', options:[{ emoji:'🌗', label:'1/2 (Half)', correct:true },{ emoji:'🌕', label:'1/4', correct:false }] }] },
             { id:'e3_gk', subject:'gk', type:'explore', titleEn:'Gujarat Heritage & Body Organs', titleHi:'गुजरात धरोहर व शरीर', introEn:'Explore Gujarat landmarks & human organs!', introHi:'गुजरात के प्रसिद्ध स्थल और शरीर के अंग जानो!', introGu:'ગુજરાતના સ્થળો અને શરીરના અંગો શીખો!', cards:[{ emoji:'🗽', label:'Statue of Unity', sub:'केवड़िया • કેવડિયા', en:'World\'s tallest statue (182m) honoring Sardar Patel!', hi:'सरदार पटेल जी की 182 मीटर ऊँची मूर्ति!', gu:'સરદાર પટેલની ૧૮૨ મીટર ઊંચી પ્રતિમા!' },{ emoji:'🕊️', label:'Sabarmati Ashram', sub:'अहमदाबाद • અમદાવાદ', en:'Mahatma Gandhi\'s historic ashram!', hi:'महात्मा गांधी का ऐतिहासिक आश्रम!', gu:'મહાત્મા ગાંધીનો ઐતિહાસિક આશ્રમ!' },{ emoji:'🧠', label:'Brain', sub:'दिमाग़ • મગજ', en:'Controls thinking, memory & movement!', hi:'सोचने और याद रखने का केंद्र!', gu:'વિચાર અને યાદશક્તિનું કેન્દ્ર!' },{ emoji:'❤️', label:'Heart', sub:'दिल • હૃદય', en:'Pumps blood 24×7 to every cell!', hi:'पूरे शरीर में ख़ून पहुँचाता है!', gu:'આખા શરીરમાં લોહી પહોંચાડે છે!' }], quiz:[{ qEn:'Which organ pumps blood?', qHi:'ख़ून कौन पंप करता है?', qGu:'લોહી કોણ પંપ કરે છે?', options:[{ emoji:'❤️', label:'Heart', correct:true },{ emoji:'👃', label:'Nose', correct:false }] }] },
             { id:'e3_co', subject:'comp', type:'code', titleEn:'Visual Coding: Bunny Path', titleHi:'कोडिंग रास्ता बनाओ', introEn:'Program the bunny to reach the carrot!', introHi:'तीर दबाकर खरगोश को गाजर तक पहुँचाओ!', introGu:'તીર દબાવી સસલાને ગાજર સુધી પહોંચાડો!', gridSize:3, start:{ r:2, c:0 }, goal:{ r:0, c:2 }, obstacles:[{ r:1, c:1 }], heroEmoji:'🐰', goalEmoji:'🥕', obstacleEmoji:'🪨', allowLoop:false },
+            { id:'e3_spy', subject:'spy', type:'quiz', titleEn:'🕵️‍♀️ Read Faces & Hidden Clues', titleHi:'चेहरे और इशारे पढ़ो • સંકેતો સમજો', questions:[{ qEn:'Read Between the Lines! Your friend says "I am fine" in a quiet voice while looking down with teary eyes. What is really happening?', qHi:'गहराई से समझो! तुम्हारी सहेली नीचे देखकर धीमे से कहती है "मैं ठीक हूँ" और आँखों में आँसू हैं। सच क्या है?', qGu:'તમારી મિત્ર નીચે જોઈને કહે "હું ઠીક છું" પણ આંખમાં આંસુ છે. સાચી વાત શું છે?', options:[{ emoji:'💛', label:'She is actually hurt or sad — gently ask how to help!', correct:true },{ emoji:'😆', label:'She is super happy, ignore her', correct:false }] },{ qEn:'You forgot your pencil at school. How do you solve it independently?', qHi:'स्कूल में पेंसिल भूल गईं। खुद कैसे हल निकालोगी?', qGu:'સ્કૂલમાં પેન્સિલ ભૂલી ગયા. જાતે કેવી રીતે ઉકેલશો?', options:[{ emoji:'🤝', label:'Politely borrow a spare pencil from a friend or teacher!', correct:true },{ emoji:'😢', label:'Sit clueless and do nothing all day', correct:false }] }] },
             { id:'e3_exam', subject:'exam', type:'quiz', titleEn:'Era 3 Boss Test', titleHi:'युग 3 परीक्षा', questions:[{ qEn:'7 × 3 = ?', qHi:'7 × 3 कितने हुए?', qGu:'૭ × ૩ કેટલા થાય?', options:[{ emoji:'🏆', label:'21', correct:true },{ emoji:'🔹', label:'18', correct:false }] },{ qEn:'Statue of Unity honors whom?', qHi:'स्टैच्यू ऑफ यूनिटी किनकी मूर्ति है?', qGu:'સ્ટેચ્યુ ઓફ યુનિટી કોની પ્રતિમા છે?', options:[{ emoji:'🗽', label:'Sardar Vallabhbhai Patel', correct:true },{ emoji:'👑', label:'King Ashoka', correct:false }] }] }
           ]
         },
@@ -728,6 +862,7 @@
             { id:'e4_ma', subject:'maths', type:'quiz', titleEn:'Decimals & Percentages (Class 5–6)', titleHi:'दशमलव और प्रतिशत • ટકાવારી', questions:[{ qEn:'What percentage equals ONE HALF (1/2)?', qHi:'आधे (1/2) को प्रतिशत (%) में क्या लिखते हैं?', qGu:'અડધા (૧/૨) ને ટકાવારીમાં શું કહેવાય?', visual:'1/2 ＝ ❓%', options:[{ emoji:'🎯', label:'50%', correct:true },{ emoji:'🔹', label:'25%', correct:false }] },{ qEn:'What is 25% of ₹100?', qHi:'₹100 का 25% कितना होता है?', qGu:'₹૧૦૦ ના ૨૫% કેટલા થાય?', visual:'25% of ₹100 ＝ ❓', options:[{ emoji:'💵', label:'₹25', correct:true },{ emoji:'🪙', label:'₹50', correct:false }] }] },
             { id:'e4_gk', subject:'gk', type:'ai_sort', titleEn:'Matter Lab: Solid vs Liquid', titleHi:'ठोस और तरल • ઘન અને પ્રવાહી', introEn:'Classify Solids vs Liquids!', introHi:'ठोस और तरल पदार्थ अलग करो!', introGu:'ઘન અને પ્રવાહી અલગ કરો!', showAiBrain:true, leftBasket:{ emoji:'🧊', labelEn:'Solid (ठोस)', labelHi:'ઘન' }, rightBasket:{ emoji:'💧', labelEn:'Liquid (तरल)', labelHi:'પ્રવાહી' }, items:[{ emoji:'🥛', en:'Milk', hi:'दूध', gu:'દૂધ', side:'right' },{ emoji:'🪨', en:'Rock', hi:'पत्थर', gu:'પથ્થર', side:'left' },{ emoji:'🧃', en:'Juice', hi:'जूस', gu:'જ્યુસ', side:'right' },{ emoji:'📚', en:'Book', hi:'किताब', gu:'પુસ્તક', side:'left' }] },
             { id:'e4_co', subject:'comp', type:'ai_sort', titleEn:'Train Robo-Mitra ML Classifier', titleHi:'मशीन लर्निंग ट्रेनिंग', introEn:'Train Robo-Mitra to separate Renewable Energy from Pollution!', introHi:'रोबो-मित्र का AI दिमाग़ 100% भरें!', introGu:'રોબો-મિત્રનું AI મગજ ૧૦૦% ટ્રેન કરો!', showAiBrain:true, leftBasket:{ emoji:'🌿', labelEn:'Clean Energy', labelHi:'સ્વચ્છ ઊર્જા' }, rightBasket:{ emoji:'💨', labelEn:'Pollution', labelHi:'પ્રદૂષણ' }, items:[{ emoji:'☀️', en:'Solar Panels', hi:'सोलर पैनल', gu:'સોલાર પેનલ', side:'left' },{ emoji:'🏭', en:'Factory Smoke', hi:'फ़ैक्ट्री धुआँ', gu:'ફેક્ટરી ધુમાડો', side:'right' },{ emoji:'🌬️', en:'Wind Turbine', hi:'पवन चक्की', gu:'પવન ચક્કી', side:'left' }] },
+            { id:'e4_spy', subject:'spy', type:'quiz', titleEn:'🕵️‍♀️ Spot Peer Pressure & Free Traps', titleHi:'जाल और दबाव पहचानो • ફાંસો ઓળખો', questions:[{ qEn:'A pop-up on a game says: "YOU WON A FREE iPAD! Type your home address & phone now!" What does a Street-Smart Spy see?', qHi:'गेम में लिखा आया "मुफ़्त आईपैड जीता! अपना घर का पता लिखो!" समझदार जासूस क्या समझेगी?', qGu:'ગેમમાં આવે "મફત આઈપેડ જીત્યા! ઘરનું સરનામું લખો!" સ્માર્ટ જાસૂસ શું સમજશે?', options:[{ emoji:'🚫', label:'It is a DATA TRAP! Close it immediately and never share info!', correct:true },{ emoji:'🏠', label:'Type my home address fast', correct:false }] },{ qEn:'A kid dares you: "Only babies follow rules, jump off that high wall!" Read their real tactic:', qHi:'कोई बच्चा चिढ़ाकर कहता है "डरपोक हो क्या? ऊँची दीवार से कूदो!" यह कैसी चाल है?', qGu:'કોઈ ચીડવીને કહે "ડરપોક છો? ઊંચી દીવાલ પરથી કૂદો!" આ કેવી ચાલ છે?', options:[{ emoji:'🧠', label:'Peer-pressure bait! Real leaders stay calm and say NO!', correct:true },{ emoji:'🏃', label:'Jump to prove I am brave', correct:false }] }] },
             { id:'e4_exam', subject:'exam', type:'quiz', titleEn:'Era 4 Boss Test (Unlocks Dark STEM!)', titleHi:'युग 4 परीक्षा', questions:[{ qEn:'50% of 80 equals...?', qHi:'80 का 50% (आधा) कितना है?', qGu:'૮૦ ના ૫૦% કેટલા થાય?', options:[{ emoji:'🏆', label:'40', correct:true },{ emoji:'🔹', label:'20', correct:false }] },{ qEn:'Largest planet in Solar System?', qHi:'सबसे बड़ा ग्रह कौन सा है?', qGu:'સૌથી મોટો ગ્રહ કયો?', options:[{ emoji:'🪐', label:'Jupiter', correct:true },{ emoji:'🔴', label:'Mars', correct:false }] }] }
           ]
         },
@@ -745,6 +880,7 @@
             { id:'e5_ma', subject:'maths', type:'quiz', titleEn:'Algebra (x) & Geometry Angles', titleHi:'बीजगणित और कोण • બીજગણિત', questions:[{ qEn:'Solve for x: 2x + 4 = 12. What is x?', qHi:'x का मान निकालें: 2x + 4 = 12', qGu:'x ની કિંમત શોધો: 2x + 4 = 12', visual:'2x + 4 = 12  ⇒  x = ❓', options:[{ emoji:'🎯', label:'x = 4', correct:true },{ emoji:'🔹', label:'x = 6', correct:false },{ emoji:'🔸', label:'x = 8', correct:false }] },{ qEn:'A Right Angle measures exactly how many degrees?', qHi:'समकोण (Right Angle) कितने डिग्री का होता है?', qGu:'કાટકોણ (Right Angle) કેટલા અંશનો હોય છે?', visual:'∟ ＝ ❓°', options:[{ emoji:'📐', label:'90°', correct:true },{ emoji:'🔄', label:'180°', correct:false }] }] },
             { id:'e5_gk', subject:'gk', type:'quiz', titleEn:'Physics Gravity, Atoms & Constitution', titleHi:'गुरुत्वाकर्षण, परमाणु और संविधान', questions:[{ qEn:'What invisible force keeps planets orbiting the Sun and pulls apples down?', qHi:'कौन सा बल चीज़ों को पृथ्वी की ओर खींचता है?', qGu:'કયું બળ પદાર્થોને પૃથ્વી તરફ ખેંચે છે?', options:[{ emoji:'🍎', label:'Gravity (गुरुत्वाकर्षण • ગુરુત્વાકર્ષણ)', correct:true },{ emoji:'💨', label:'Wind', correct:false }] },{ qEn:'Who is known as the Chief Architect of the Indian Constitution?', qHi:'भारतीय संविधान के निर्माता कौन हैं?', qGu:'ભારતીય બંધારણના ઘડવૈયા કોણ છે?', options:[{ emoji:'⚖️', label:'Dr. B. R. Ambedkar', correct:true },{ emoji:'🚀', label:'Newton', correct:false }] }] },
             { id:'e5_co', subject:'comp', type:'code', titleEn:'Coding Console + Loop (×2)', titleHi:'लूप कोडिंग कंसोल', introEn:'Use arrows + the x2 Loop block to navigate Robo-Mitra to the Star!', introHi:'रोबो-मित्र को तारे तक पहुँचाओ, x2 लूप इस्तेमाल करो!', introGu:'રોબો-મિત્રને તારા સુધી પહોંચાડો, x2 લૂપ વાપરો!', gridSize:4, start:{ r:3, c:0 }, goal:{ r:0, c:3 }, obstacles:[{ r:2, c:1 },{ r:1, c:2 }], heroEmoji:'🤖', goalEmoji:'🌟', obstacleEmoji:'🪨', allowLoop:true },
+            { id:'e5_spy', type:'quiz', titleEn:'🕵️‍♀️ Street-Smart Money & Fake News', titleHi:'पैसे की समझ और फ़ेक न्यूज़ • સ્માર્ટ ગ્રાહક', questions:[{ qEn:'Street-Smart Shopper! A seller says "Special discount for you: ₹250!" You flip the box and see printed MRP ₹200. What do you do?', qHi:'दुकानदार कहता है "तुम्हारे लिए खास ₹250!" पर डिब्बे पर MRP ₹200 छपा है। क्या करोगी?', qGu:'દુકાનદાર કહે "ખાસ ₹૨૫૦!" પણ બોક્સ પર MRP ₹૨૦૦ લખ્યું છે. શું કરશો?', options:[{ emoji:'🔍', label:'Point out the ₹200 MRP politely or walk away — never overpay!', correct:true },{ emoji:'💸', label:'Pay ₹250 without checking', correct:false }] },{ qEn:'You pay ₹100 for a ₹65 notebook. Before walking away from the counter, what must you verify?', qHi:'₹65 की कॉपी के लिए ₹100 दिए। काउंटर से हटने से पहले क्या गिनोगी?', qGu:'₹૬૫ ની નોટબુક માટે ₹૧૦૦ આપ્યા. શું ગણીને લેશો?', options:[{ emoji:'🧮', label:'Count exact ₹35 change right at the counter!', correct:true },{ emoji:'🤷', label:'Stuff coins in pocket without counting', correct:false }] }] },
             { id:'e5_exam', subject:'exam', type:'quiz', titleEn:'Era 5 Console Boss Exam', titleHi:'युग 5 परीक्षा', questions:[{ qEn:'Solve: 3x = 27 ⇒ x = ?', qHi:'3x = 27 तो x = ?', qGu:'3x = 27 તો x = ?', options:[{ emoji:'🎯', label:'9', correct:true },{ emoji:'🔹', label:'6', correct:false }] },{ qEn:'What is 12 squared (12²)?', qHi:'12 का वर्ग (12 × 12) क्या है?', qGu:'૧૨ નો વર્ગ (૧૨ × ૧૨) કેટલો?', options:[{ emoji:'⚡', label:'144', correct:true },{ emoji:'🔹', label:'124', correct:false }] }] }
           ]
         },
@@ -762,6 +898,7 @@
             { id:'e6_ma', subject:'maths', type:'quiz', titleEn:'Pythagoras & Ratios (Pro Math)', titleHi:'पाइथागोरस और अनुपात', questions:[{ qEn:'Pythagoras Theorem! In a right triangle with sides 3 and 4, what is the hypotenuse (√(3² + 4²))?', qHi:'समकोण त्रिभुज की भुजाएँ 3 और 4 हैं, तो कर्ण क्या होगा?', qGu:'કાટકોણ ત્રિકોણમાં બાજુઓ ૩ અને ૪ હોય તો કર્ણ કેટલો?', visual:'3² + 4² = 9 + 16 = 25 ⇒ √25 = ❓', options:[{ emoji:'📐', label:'5', correct:true },{ emoji:'🔹', label:'7', correct:false }] },{ qEn:'Ratio: If 2 pens cost ₹30, how much do 5 pens cost?', qHi:'2 पेन ₹30 के हैं, तो 5 पेन कितने के होंगे?', qGu:'૨ પેન ₹૩૦ ની હોય, તો ૫ પેન કેટલાની?', options:[{ emoji:'💵', label:'₹75', correct:true },{ emoji:'🪙', label:'₹60', correct:false }] }] },
             { id:'e6_gk', subject:'gk', type:'quiz', titleEn:'ISRO Missions & Chemistry Formulas', titleHi:'इसरो और रसायन विज्ञान', questions:[{ qEn:'What is the chemical formula of WATER?', qHi:'पानी का रासायनिक सूत्र क्या है?', qGu:'પાણીનું રાસાયણિક સૂત્ર શું છે?', options:[{ emoji:'💧', label:'H₂O', correct:true },{ emoji:'💨', label:'CO₂', correct:false }] },{ qEn:'Which Indian space mission studied the Sun (2023–2024)?', qHi:'सूरज का अध्ययन करने वाला भारत का मिशन कौन सा है?', qGu:'સૂર્યનો અભ્યાસ કરવા માટેનું ભારતનું મિશન કયું?', options:[{ emoji:'☀️', label:'Aditya-L1 (ISRO)', correct:true },{ emoji:'🌊', label:'Samudrayaan', correct:false }] }] },
             { id:'e6_co', subject:'comp', type:'code_ide', titleEn:'Interactive Python Code IDE', titleHi:'असली पायथन कोडिंग लैब', puzzles:[{ promptEn:'Predict the Python console output! Run the right answer:', promptHi:'इस Python कोड का आउटपुट क्या आएगा?', promptGu:'આ Python કોડનું આઉટપુટ શું આવશે?', code:'score = 10\nif score >= 10:\n    print("SUPER GENIUS!")\nelse:\n    print("TRY AGAIN")', options:[{ label:'SUPER GENIUS!', correct:true },{ label:'TRY AGAIN', correct:false },{ label:'10', correct:false }] },{ promptEn:'Predict the Python loop output:', promptHi:'इस Python लूप का आउटपुट क्या होगा?', promptGu:'આ Python લૂપનું આઉટપુટ શું હશે?', code:'total = 0\nfor i in [2, 4, 6]:\n    total = total + i\nprint(total)', options:[{ label:'12', correct:true },{ label:'6', correct:false },{ label:'10', correct:false }] }] },
+            { id:'e6_spy', type:'quiz', titleEn:'🕵️‍♀️ Cyber Spy & Scam Radar', titleHi:'साइबर जासूस और स्कैम पहचान • સાયબર સાવધાની', questions:[{ qEn:'UNDERCOVER ALERT! A caller says: "Urgent! Your family bank account closes in 2 minutes! Tell me the 6-digit OTP now!" Spot the spy pattern:', qHi:'कॉलर कहता है "2 मिनट में बैंक खाता बंद हो जाएगा, तुरंत OTP बताओ!" यह क्या है?', qGu:'કોલર કહે "૨ મિનિટમાં બેંક ખાતું બંધ થશે, તરત OTP આપો!" આ શું છે?', options:[{ emoji:'🚨', label:'Fake Urgency + Fear = Classic SCAM! Hang up immediately!', correct:true },{ emoji:'📱', label:'Read the OTP quickly to save the account', correct:false }] },{ qEn:'Someone online you never met in real life praises you constantly and asks to keep your chat a secret from parents. Read between the lines:', qHi:'ऑनलाइन कोई अनजान रोज़ तारीफ़ करे और कहे "मम्मी-पापा को मत बताना"। यह क्या संकेत है?', qGu:'ઓનલાઇન અજાણ્યો વ્યક્તિ વખાણ કરે અને કહે "મમ્મી-પપ્પાને ન કહેતા". આ શું સંકેત છે?', options:[{ emoji:'🛡️', label:'Major RED FLAG (grooming/manipulation)! Block & tell parents right away!', correct:true },{ emoji:'🤫', label:'Keep it a fun secret', correct:false }] }] },
             { id:'e6_exam', subject:'exam', type:'quiz', titleEn:'Era 6 Pro IDE Boss Exam', titleHi:'युग 6 परीक्षा', questions:[{ qEn:'Chemical formula of Carbon Dioxide?', qHi:'कार्बन डाइऑक्साइड का सूत्र?', qGu:'કાર્બન ડાયોક્સાઇડનું સૂત્ર?', options:[{ emoji:'🧪', label:'CO₂', correct:true },{ emoji:'💧', label:'H₂O', correct:false }] },{ qEn:'Who wrote "Vaishnava Jana To"?', qHi:'"वैष्णव जन" किसने लिखा?', qGu:'"વૈષ્ણવ જન" કોણે રચ્યું?', options:[{ emoji:'🎵', label:'Narsinh Mehta', correct:true },{ emoji:'🎭', label:'Shakespeare', correct:false }] }] }
           ]
         },
@@ -779,6 +916,7 @@
             { id:'e7_ma', subject:'maths', type:'quiz', titleEn:'Probability, Primes & Averages', titleHi:'प्रायिकता और अभाज्य संख्याएँ', questions:[{ qEn:'Which of these is a PRIME number (divisible only by 1 and itself)?', qHi:'इनमें से अभाज्य (Prime) संख्या कौन सी है?', qGu:'આમાંથી અવિભાજ્ય (Prime) સંખ્યા કઈ છે?', options:[{ emoji:'⚡', label:'17', correct:true },{ emoji:'🔹', label:'15', correct:false },{ emoji:'🔸', label:'21', correct:false }] },{ qEn:'What is the AVERAGE (Mean) of 10, 20, and 30?', qHi:'10, 20 और 30 का औसत (Average) क्या है?', qGu:'૧૦, ૨૦ અને ૩૦ ની સરેરાશ કેટલી થાય?', visual:'(10 + 20 + 30) ÷ 3 = ❓', options:[{ emoji:'🎯', label:'20', correct:true },{ emoji:'🔹', label:'15', correct:false }] }] },
             { id:'e7_gk', subject:'gk', type:'quiz', titleEn:'Space Telescopes, Chips & World GK', titleHi:'विश्व ज्ञान और अंतरिक्ष विज्ञान', questions:[{ qEn:'Which powerful space telescope sees the earliest galaxies in infrared?', qHi:'सबसे दूर की आकाशगंगाएँ देखने वाला स्पेस टेलीस्कोप कौन सा है?', qGu:'સૌથી દૂરની ગેલેક્સી જોનાર ટેલિસ્કોપ કયું છે?', options:[{ emoji:'🔭', label:'James Webb (JWST)', correct:true },{ emoji:'🔬', label:'Microscope', correct:false }] },{ qEn:'What tiny material are computer microchips made from?', qHi:'कंप्यूटर माइक्रोचिप किस तत्व से बनती है?', qGu:'કમ્પ્યુટર માઇક્રોચિપ શેમાંથી બને છે?', options:[{ emoji:'💻', label:'Silicon', correct:true },{ emoji:'🪵', label:'Wood', correct:false }] }] },
             { id:'e7_co', subject:'comp', type:'neural_lab', titleEn:'Interactive Neural Network & LLM Lab', titleHi:'न्यूरल नेटवर्क और LLM लैब', introEn:'Adjust the AI Neuron Weights to see how a Neural Network makes a decision, then answer the LLM check!', introHi:'AI न्यूरॉन के वज़न बदलकर देखो कि न्यूरल नेटवर्क कैसे निर्णय लेता है!', introGu:'AI ન્યુરોનના વજન બદલીને જુઓ કે ન્યુરલ નેટવર્ક કેવી રીતે નિર્ણય લે છે!' },
+            { id:'e7_spy', type:'quiz', titleEn:'🕵️‍♀️ Master Strategist: Hidden Intent', titleHi:'मास्टर रणनीतिकार • માસ્ટર સ્ટ્રેટેજિસ્ટ', questions:[{ qEn:'Read Between the Lines! A teammate always flatters you right before a hard deadline, then asks you to do their entire share of the project. What is the smart leader response?', qHi:'कोई साथी हर बार काम से पहले मीठी तारीफ़ करके अपना काम तुम पर डाल देता है। स्मार्ट लीडर क्या करेगी?', qGu:'કોઈ સાથી વારંવાર વખાણ કરીને પોતાનું કામ તમારા પર નાખે છે. સ્માર્ટ લીડર શું કરશે?', options:[{ emoji:'⚖️', label:'Spot the flattery tactic! Smile, divide tasks clearly, and hold fair boundaries!', correct:true },{ emoji:'😓', label:'Do all their work silently every time', correct:false }] },{ qEn:'What is the Spy OODA Loop used by top strategists to stay calm and independent in any crisis?', qHi:'किसी भी मुश्किल में शांत और स्वतंत्र निर्णय लेने का OODA नियम क्या है?', qGu:'કોઈપણ મુશ્કેલીમાં શાંત રહી નિર્ણય લેવાનો OODA નિયમ શું છે?', options:[{ emoji:'🧭', label:'Observe → Orient → Decide → Act!', correct:true },{ emoji:'😱', label:'Panic → Freeze → Wait for rescue', correct:false }] }] },
             { id:'e7_exam', subject:'exam', type:'quiz', titleEn:'Era 7 Chief Architect Grand Exam', titleHi:'ग्रैंड आर्किटेक्ट परीक्षा', questions:[{ qEn:'How does an LLM (Large Language Model) generate text?', qHi:'LLM टेक्स्ट कैसे बनाता है?', qGu:'LLM લખાણ કેવી રીતે બનાવે છે?', options:[{ emoji:'🧠', label:'Predicts the next token using learned patterns', correct:true },{ emoji:'🧙', label:'Magic spells', correct:false }] },{ qEn:'Mean (Average) of 4, 8, and 12 = ?', qHi:'4, 8 और 12 का औसत?', qGu:'૪, ૮ અને ૧૨ ની સરેરાશ?', options:[{ emoji:'👑', label:'8', correct:true },{ emoji:'🔹', label:'6', correct:false }] }] }
           ]
         },
@@ -801,7 +939,7 @@
         childName:'', langMode:'all', soundOn:true, speechRate:0.88,
         enVoiceName:'', hiVoiceName:'', guVoiceName:'', unlockAll:false,
         completedModules:{}, stars:0, currentView:'home', homeTab:'chapters',
-        currentEraId:null, currentModuleId:null, gymCat:'math', gymStreak:0, gymSolved:0
+        currentEraId:null, currentModuleId:null, gymCat:'math', gymStreak:0, gymSolved:0, spyIq:0, spyIdx:0
       };
       let runtime = {
         stepIdx:0, phase:'explore', tappedCards:{}, countedItems:{}, sortIdx:0,
@@ -820,7 +958,7 @@
           window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
             childName:state.childName, langMode:state.langMode, soundOn:state.soundOn, speechRate:state.speechRate,
             enVoiceName:state.enVoiceName, hiVoiceName:state.hiVoiceName, guVoiceName:state.guVoiceName,
-            unlockAll:state.unlockAll, completedModules:state.completedModules, stars:state.stars, gymSolved:state.gymSolved
+            unlockAll:state.unlockAll, completedModules:state.completedModules, stars:state.stars, gymSolved:state.gymSolved, spyIq:state.spyIq
           }));
         } catch (e) {}
       }
@@ -896,8 +1034,8 @@
 
       function switchHomeTab(tabName) {
         stopSongs(); state.homeTab = tabName;
-        ['tabChapters','tabDraw','tabMusic','tabStickers'].forEach(function (id) {
-          const match = (id === 'tabChapters' && tabName === 'chapters') || (id === 'tabDraw' && tabName === 'draw') || (id === 'tabMusic' && tabName === 'music') || (id === 'tabStickers' && tabName === 'stickers');
+        ['tabChapters','tabSpy','tabDraw','tabMusic','tabStickers'].forEach(function (id) {
+          const match = (id === 'tabChapters' && tabName === 'chapters') || (id === 'tabSpy' && tabName === 'spy') || (id === 'tabDraw' && tabName === 'draw') || (id === 'tabMusic' && tabName === 'music') || (id === 'tabStickers' && tabName === 'stickers');
           document.getElementById(id).classList.toggle('hidden', !match);
         });
         document.querySelectorAll('.home-tab-btn').forEach(function (btn) {
@@ -906,6 +1044,7 @@
         });
         if (tabName === 'draw') resizeFreeDrawCanvas();
         else if (tabName === 'stickers') renderStickerBook();
+        else if (tabName === 'spy') renderSpyHqMission();
       }
 
       function renderHome() {
@@ -992,7 +1131,7 @@
           btn.innerHTML =
             '<div class="flex items-start justify-between gap-2">' +
               '<div class="text-4xl">' + (locked ? '🔒' : meta.icon) + '</div>' +
-              '<span class="px-2.5 py-1 rounded-full text-xs font-extrabold ' + (done ? 'bg-emerald-500 text-white' : meta.badge) + '">' + (done ? '⭐ Done' : locked ? 'Finish 6 modules' : meta.en) + '</span>' +
+              '<span class="px-2.5 py-1 rounded-full text-xs font-extrabold ' + (done ? 'bg-emerald-500 text-white' : meta.badge) + '">' + (done ? '⭐ Done' : locked ? 'Finish 7 modules' : meta.en) + '</span>' +
             '</div>' +
             '<div class="mt-3">' +
               '<div class="text-base font-black">' + mod.titleEn + '</div>' +
@@ -1004,7 +1143,7 @@
 
           btn.addEventListener('click', function () {
             playTone('tap');
-            if (locked) { showToast('⭐ Complete all 6 subjects to unlock the Boss Exam!'); return; }
+            if (locked) { showToast('⭐ Complete all 7 subjects to unlock the Boss Exam!'); return; }
             openActivity(era.id, mod.id);
           });
           grid.appendChild(btn);
@@ -1424,7 +1563,98 @@
       /* =========================================================
          7. ERA 8: INFINITE MASTERY GYM (PROCEDURAL GENERATOR)
          ========================================================= */
+      const SPY_HQ_MISSIONS = [
+        {
+          tag:'🔍 OBSERVATION & INDEPENDENCE',
+          qEn:'You enter a brand-new birthday hall with Papa. Like a trained Secret Agent, what do you notice in the first 10 seconds?',
+          qHi:'तुम एक नए बर्थडे हॉल में जाती हो। एक स्मार्ट जासूस पहले 10 सेकंड में क्या ध्यान से देखती है?',
+          qGu:'તમે નવા હોલમાં જાઓ છો. સ્માર્ટ જાસૂસ પહેલા ૧૦ સેકન્ડમાં શું નોંધે?',
+          opts:[
+            { text:'🚪 Where the Exit door, Washroom & Papa are sitting!', ok:true, fbEn:'Sharp Agent! Situational awareness keeps you calm and independent anywhere!', fbHi:'शाबाश जासूस! आसपास के रास्ते याद रखने से तुम कहीं नहीं घबराओगी!', fbGu:'શાબાશ! આસપાસની જગ્યા યાદ રાખવાથી તમે ક્યારેય ગભરાશો નહીં!' },
+            { text:'🙈 Look only at the floor and stay clueless', ok:false }
+          ]
+        },
+        {
+          tag:'🧩 READ BETWEEN THE LINES',
+          qEn:'A new kid at the park says: "Let me hold your new smartwatch for 1 minute while you go down the slide!" What is the hidden risk?',
+          qHi:'पार्क में एक नया बच्चा कहता है "अपनी नई घड़ी मुझे दो, तुम स्लाइड कर आओ!" इसमें छुपा ख़तरा क्या है?',
+          qGu:'પાર્કમાં નવું બાળક કહે "તમારી નવી ઘડિયાળ મને આપો, તમે સ્લાઇડ કરી આવો!" છુપું જોખમ શું છે?',
+          opts:[
+            { text:'🛡️ They might run off or break it! Politely say "No thanks, I keep my things with me!"', ok:true, fbEn:'Brilliant street smarts! Polite firmness protects your belongings without fighting!', fbHi:'बहुत स्मार्ट! विनम्रता से मना करना सबसे बड़ी समझदारी है!', fbGu:'ખૂબ સ્માર્ટ! નમ્રતાથી ના પાડવી એ જ સાચી સમજદારી છે!' },
+            { text:'⌚ Hand it over immediately to look nice', ok:false }
+          ]
+        },
+        {
+          tag:'💡 INDEPENDENT PROBLEM SOLVING',
+          qEn:'Your shoelace opens right before a race and Papa is far in the audience. What does an independent Champion do?',
+          qHi:'दौड़ से पहले जूते का फीता खुल गया और पापा दूर बैठे हैं। आत्मनिर्भर चैंपियन क्या करेगी?',
+          qGu:'દોડ પહેલા બૂટની દોરી ખૂલી ગઈ અને પપ્પા દૂર છે. આત્મનિર્ભર ચેમ્પિયન શું કરશે?',
+          opts:[
+            { text:'👟 Kneel calmly, tie it myself (or tuck safely) & run with confidence!', ok:true, fbEn:'Zero dependency! Calm self-reliance turns any problem into a win!', fbHi:'वाह! खुद समस्या सुलझाना ही असली आज़ादी है!', fbGu:'વાહ! જાતે ઉકેલ લાવવો એ જ સાચી આત્મનિર્ભરતા છે!' },
+            { text:'😭 Stop, cry and look helplessly for Papa', ok:false }
+          ]
+        },
+        {
+          tag:'🚨 DETECT HIDDEN INTENT',
+          qEn:'Someone whispers: "Don\'t tell your teacher, let\'s sneak into the empty lab!" Why did they say "don\'t tell"?',
+          qHi:'कोई चुपके से कहे "टीचर को मत बताना, चलो खाली लैब में घुसते हैं!" उन्होंने ऐसा क्यों कहा?',
+          qGu:'કોઈ કહે "ટીચરને ન કહેતા, ચાલો ખાલી લેબમાં જઈએ!" આવું કેમ કહ્યું?',
+          opts:[
+            { text:'🚩 Secretive "don\'t tell adults" = Unsafe rule-breaking! Walk away smartly!', ok:true, fbEn:'Master Spy instinct! Whenever someone demands secrecy from trusted adults, it is a red flag!', fbHi:'एकदम सही जासूसी समझ! बड़ों से छुपाने वाली बात हमेशा ख़तरे का संकेत है!', fbGu:'એકદમ સાચી સમજ! વડીલોથી છુપાવવાની વાત હંમેશા ચેતવણી છે!' },
+            { text:'🤫 Agree so they think I am cool', ok:false }
+          ]
+        }
+      ];
+
+      function renderSpyHqMission() {
+        document.getElementById('spyIqScore').textContent = String(state.spyIq || 0);
+        const m = SPY_HQ_MISSIONS[state.spyIdx % SPY_HQ_MISSIONS.length];
+        SpeechEngine.speak('sneha', m.qEn, m.qHi, m.qGu);
+        const card = document.getElementById('spyMissionCard');
+        card.innerHTML =
+          '<div class="flex items-center justify-between gap-2">' +
+            '<span class="px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-black uppercase">' + m.tag + '</span>' +
+            '<span class="text-xs font-bold text-slate-400">Case #' + ((state.spyIdx % SPY_HQ_MISSIONS.length) + 1) + ' / ' + SPY_HQ_MISSIONS.length + '</span>' +
+          '</div>' +
+          '<p class="text-base sm:text-lg font-black text-white leading-snug">' + m.qEn + '</p>' +
+          '<p class="hindi text-xs font-bold text-rose-300">' + m.qHi + '</p>' +
+          '<p class="gujarati text-xs font-bold text-teal-300">' + m.qGu + '</p>' +
+          '<div id="spyOptsWrap" class="grid grid-cols-1 gap-2.5 pt-1"></div>';
+
+        const ow = document.getElementById('spyOptsWrap');
+        m.opts.forEach(function (o) {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'tap-card text-left p-4 rounded-2xl bg-slate-900 hover:bg-slate-700 border-2 border-slate-700 hover:border-amber-400 font-bold text-sm text-slate-100 transition';
+          b.textContent = o.text;
+          b.addEventListener('click', function () {
+            if (o.ok) {
+              playTone('correct');
+              state.spyIq = (state.spyIq || 0) + 10;
+              state.stars++;
+              saveState(); updateHeaderStats();
+              SpeechEngine.speak('sneha', o.fbEn, o.fbHi, o.fbGu);
+              showToast('🕵️‍♀️ +10 Street-Smart IQ! +1 ⭐');
+              state.spyIdx = (state.spyIdx + 1) % SPY_HQ_MISSIONS.length;
+              setTimeout(renderSpyHqMission, 2200);
+            } else {
+              playTone('wrong');
+              b.classList.add('wiggle', 'border-rose-500');
+              SpeechEngine.speak('sneha', 'Think like a Secret Agent! Look closely at the clue and try the smarter move!', 'जासूस की तरह सोचो और ज़्यादा समझदार विकल्प चुनो!', 'જાસૂસની જેમ વિચારો અને વધુ સ્માર્ટ વિકલ્પ પસંદ કરો!');
+              setTimeout(function () { b.classList.remove('wiggle'); }, 450);
+            }
+          });
+          ow.appendChild(b);
+        });
+      }
+
       const GYM_POOLS = {
+        spy: [
+          { qEn:'A stranger says "Papa sent me to pick you up" without knowing your family Secret Code Word. What is it?', qHi:'अनजान व्यक्ति बिना सीक्रेट कोड वर्ड बताए कहे "पापा ने भेजा है"। यह क्या है?', qGu:'અજાણી વ્યક્તિ સિક્રેટ કોડ વગર કહે "પપ્પાએ મોકલ્યો". આ શું છે?', opts:['A Trick! Shout NO & tell a trusted adult','Get in their car','Stay silent and follow'], ans:0 },
+          { qEn:'Shopkeeper asks ₹250, but printed MRP on the box is ₹200. Street-smart move?', qHi:'दुकानदार ₹250 माँगता है पर MRP ₹200 है। समझदार कदम?', qGu:'દુકાનદાર ₹૨૫૦ માંગે પણ MRP ₹૨૦૦ છે. સ્માર્ટ પગલું?', opts:['Point out ₹200 MRP & refuse to overpay','Pay ₹250 quietly','Buy two boxes'], ans:0 },
+          { qEn:'A caller creates panic: "Give OTP in 1 minute or bank closes!" What is this tactic?', qHi:'कॉलर डराकर तुरंत OTP माँगे — यह क्या है?', qGu:'કોલર ડરાવીને તરત OTP માંગે — આ શું છે?', opts:['Urgency Scam Trap — hang up!','Real bank help','Lucky prize'], ans:0 },
+          { qEn:'Your friend looks teary but whispers "I am fine". Reading between the lines means:', qHi:'दोस्त की आँखों में आँसू हैं पर कहती है "ठीक हूँ"। असली बात?', qGu:'મિત્રની આંખમાં આંસુ છે પણ કહે "ઠીક છું". સાચી વાત?', opts:['She is upset — offer kind support','She wants to race','Ignore her'], ans:0 }
+        ],
         trilingual: [
           { qEn:'Gujarati word for "Peacock"?', qHi:'मोर को गुजराती में क्या कहते हैं?', qGu:'Peacock ને ગુજરાતીમાં શું કહેવાય?', opts:['મોર (Mor)','સિંહ (Sinh)','હાથી (Hathi)'], ans:0 },
           { qEn:'Hindi word for "Water"?', qHi:'Water का शुद्ध हिन्दी पर्यायवाची?', qGu:'Water ને હિન્દીમાં શું કહેવાય?', opts:['जल / पानी','अग्नि','वायु'], ans:0 },
@@ -1614,9 +1844,22 @@
           list.forEach(function (v) { const o = document.createElement('option'); o.value = v.name; o.textContent = v.name + ' (' + v.lang + ')'; if (curr && curr.name === v.name) o.selected = true; sel.appendChild(o); });
         };
         const enV = SpeechEngine.voices.filter(function (v) { return /^en/i.test(v.lang); });
+        const hiV = SpeechEngine.voices.filter(function (v) { return /^hi/i.test(v.lang) || /hindi|हिन्दी|swara|lekha|kalpana/i.test(v.name); });
+        const guV = SpeechEngine.voices.filter(function (v) { return /^gu/i.test(v.lang) || /gujarati|ગુજરાતી|dhwani/i.test(v.name); });
         fill(enS, enV.length ? enV : SpeechEngine.voices, SpeechEngine.enVoice, 'Default English (en-IN)');
-        fill(hiS, SpeechEngine.voices.filter(function (v) { return /^hi/i.test(v.lang) || /hindi|हिन्दी/i.test(v.name); }), SpeechEngine.hiVoice, 'Default Hindi (hi-IN)');
-        fill(guS, SpeechEngine.voices.filter(function (v) { return /^gu/i.test(v.lang) || /gujarati|ગુજરાતી/i.test(v.name); }), SpeechEngine.guVoice, 'Default Gujarati (gu-IN)');
+        fill(hiS, hiV, SpeechEngine.hiVoice, '⚠️ Not installed in this browser');
+        fill(guS, guV, SpeechEngine.guVoice, '⚠️ Not installed in this browser');
+
+        const box = document.getElementById('voiceStatusList');
+        if (box) {
+          const enMsg = SpeechEngine.enVoice ? '✅ English: <strong>' + SpeechEngine.enVoice.name + '</strong>' : '⚠️ English: Default';
+          const hiMsg = SpeechEngine.hiVoice ? '✅ Native Hindi: <strong>' + SpeechEngine.hiVoice.name + '</strong>' : '⚠️ <strong>No Native Hindi voice found</strong> (English accent blocked so it won\'t mispronounce).';
+          const guMsg = SpeechEngine.guVoice ? '✅ Native Gujarati: <strong>' + SpeechEngine.guVoice.name + '</strong>' : '⚠️ <strong>No Native Gujarati voice found</strong> (English accent blocked).';
+          const tip = (!SpeechEngine.hiVoice || !SpeechEngine.guVoice)
+            ? '<div class="mt-1.5 text-[11px] text-indigo-700 font-semibold">💡 Best authentic Indian voices: Open this HTML in <strong>Microsoft Edge</strong> (built-in Natural <em>Swara</em> Hindi &amp; <em>Dhwani</em> Gujarati), or on <strong>Android Chrome</strong> / <strong>Windows Language Settings</strong> install Hindi &amp; Gujarati speech packs.</div>'
+            : '<div class="mt-1 text-[11px] text-emerald-700 font-semibold">🎉 All 3 authentic native voices are active!</div>';
+          box.innerHTML = '<div>' + enMsg + '</div><div>' + hiMsg + '</div><div>' + guMsg + '</div>' + tip;
+        }
       }
 
       function bindEvents() {
@@ -1690,3 +1933,4 @@
   </script>
 </body>
 </html>
+
